@@ -12,6 +12,12 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+
+  Team ABC (Team 13)
+  Gabriel Raphael Garcia Montoya
+  Celestine Co
+  Woojin Cheon
+  Alison Tsoi
 --%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +28,7 @@
 <body>
 
   <nav>
-    <a id="navTitle" href="/">CodeU Chat App</a>
+    <a id="Index" href="/">CodeU Chat App</a>
     <a href="/conversations">Conversations</a>
     <% if(request.getSession().getAttribute("user") != null){ %>
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
