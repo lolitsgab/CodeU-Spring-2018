@@ -135,8 +135,7 @@ public void TestdoPost_InvalidPassword() throws IOException, ServletException {
 
   // test username's password should be testpassword not bad password
   User mockUser = Mockito.mock(User.class);
-  String password = mockRequest.getParameter("password");
-  Mockito.doReturn(false).when(password.equals(mockUser.getPassword()));
+  
   loginServlet.setUserStore(mockUserStore);
 
   //HttpSession mockSession = Mockito.mock(HttpSession.class);
