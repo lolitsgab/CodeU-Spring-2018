@@ -107,7 +107,7 @@ public class LoginServletTest {
     // when user calls get password should return testpassword
     User mockUser = Mockito.mock(User.class);
     Mockito.when(mockUser.getPassword()).thenReturn("testpassword");
-    String password = mockUsert.getPassword();
+    String password = mockUser.getPassword();
 
     loginServlet.setUserStore(mockUserStore);
 
