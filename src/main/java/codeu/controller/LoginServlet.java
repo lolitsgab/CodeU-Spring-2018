@@ -59,26 +59,43 @@ public class LoginServlet extends HttpServlet {
   }
 
   /**
-   * This function fires when a user submits the login form. It gets the username from the submitted
-   * form data, and then adds it to the session so we know the user is logged in.
-   */
+   * This function fires when a user submits the login form. It gets the username and password from
+   * the submitted form data, checks that they're valid and either adds it to the user session
+   * so we know the user is logged in or shows an error to the user
+  */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     String username = request.getParameter("username");
+    String password = request.getParameter("password");
 
-    if (!username.matches("[\\w*\\s*]*")) {
-      request.setAttribute("error", "Please enter only letters, numbers, and spaces.");
-      request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-      return;
+    if (userStore.isUserRegistered(username))
+    {
+      User user = userStore.getUser(username);
+      if (password.equals(user.getPassword())){
+        request.getSession().setAttribute("user", username);
+        response.sendRedirect("/conversations");
+      }
+      else{
+        request.setAttribute("error", "Invalid password.");
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+      }
+    }
+
+    else {
+      request.setAttribute("error", "That username was not found.");
+      request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request,response);
     }
     // TODO: Change 'null' to the actual password
+    /*
+    if the user is not registered should print out that the username was not found 
     if (!userStore.isUserRegistered(username)) {
-      User user = new User(UUID.randomUUID(), username, null, Instant.now());
+      User user = new User(UUID.randomUUID(), username, password, Instant.now()); // not sure if this is right
       userStore.addUser(user);
     }
 
     request.getSession().setAttribute("user", username);
     response.sendRedirect("/conversations");
+    */
   }
 }
