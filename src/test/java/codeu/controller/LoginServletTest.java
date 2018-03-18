@@ -126,7 +126,7 @@ public class LoginServletTest {
 
 // adding a test for an invalid password
 @Test
-public void TestdoPost_InvalidPassword() throw IOException, ServletException {
+public void TestdoPost_InvalidPassword() throws IOException, ServletException {
   Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
 
   // adding mock password
@@ -150,4 +150,4 @@ public void TestdoPost_InvalidPassword() throw IOException, ServletException {
 
 
 }
-};
+}
