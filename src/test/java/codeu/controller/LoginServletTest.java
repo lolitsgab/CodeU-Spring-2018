@@ -74,7 +74,7 @@ public class LoginServletTest {
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(false);
-    //loginServlet.setUserStore(mockUserStore);
+    loginServlet.setUserStore(mockUserStore);
 
     //HttpSession mockSession = Mockito.mock(HttpSession.class);
     //Mockito.when(mockRequest.getSession()).thenReturn(mockSession);
