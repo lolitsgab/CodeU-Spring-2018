@@ -70,11 +70,11 @@ public class LoginServletTest {
   public void testDoPost_NewUser() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
     // adding mock password
-    Mockito.when(mockRequest.getParameter("username")).thenReturn("testpassword");
+    Mockito.when(mockRequest.getParameter("password")).thenReturn("testpassword");
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(false);
-    loginServlet.setUserStore(mockUserStore);
+    //loginServlet.setUserStore(mockUserStore);
 
     //HttpSession mockSession = Mockito.mock(HttpSession.class);
     //Mockito.when(mockRequest.getSession()).thenReturn(mockSession);
@@ -83,7 +83,7 @@ public class LoginServletTest {
 
     //ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
     //httpSession.setAttribute("error","That username was not found.");
-    Mockito.verify(mockSession).setAttribute("error", "That username was not found.");
+    Mockito.verify(mockRequest).setAttribute("error", "That username was not found.");
     Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
 /*
     this section no longer needed as it verifies that the user was added to the Userstore when
@@ -148,12 +148,12 @@ public void TestdoPost_InvalidPassword() throws IOException, ServletException {
 
   loginServlet.setUserStore(mockUserStore);
 
-  HttpSession mockSession = Mockito.mock(HttpSession.class);
-  Mockito.when(mockRequest.getSession()).thenReturn(mockSession);
+  //HttpSession mockSession = Mockito.mock(HttpSession.class);
+  //Mockito.when(mockRequest.getSession()).thenReturn(mockSession);
 
   loginServlet.doPost(mockRequest, mockResponse);
 
-  Mockito.verify(mockSession).setAttribute("error", "Invalid password.");
+  Mockito.verify(mockRequest).setAttribute("error", "Invalid password.");
   Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
 
 
