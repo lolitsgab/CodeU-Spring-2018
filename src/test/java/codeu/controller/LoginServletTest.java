@@ -107,7 +107,8 @@ public class LoginServletTest {
     // when user calls get password should return testpassword
     User mockUser = Mockito.mock(User.class);
     Mockito.when(mockUser.getPassword()).thenReturn("testpassword");
-    Mockito.when(mockRequest.getParameter("password").equals(mockUser.getPassword())).thenReturn(true);
+    String password = mockRequest.getParameter("password");
+    Mockito.when(password.equals(mockUser.getPassword())).thenReturn(true);
     loginServlet.setUserStore(mockUserStore);
 
     HttpSession mockSession = Mockito.mock(HttpSession.class);
@@ -135,8 +136,8 @@ public void TestdoPost_InvalidPassword() throws IOException, ServletException {
 
   // test username's password should be testpassword not bad password
   User mockUser = Mockito.mock(User.class);
-  Mockito.when(mockUser.getPassword()).thenReturn("testpassword");
-  Mockito.when(mockRequest.getParameter("password").equals(mockUser.getPassword())).thenReturn(false);
+  String password = mockRequest.getParameter("password");
+  Mockito.when(password.equals(mockUser.getPassword())).thenReturn(false);
   loginServlet.setUserStore(mockUserStore);
 
   //HttpSession mockSession = Mockito.mock(HttpSession.class);
