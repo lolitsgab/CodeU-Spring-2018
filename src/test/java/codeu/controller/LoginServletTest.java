@@ -82,6 +82,7 @@ public class LoginServletTest {
     loginServlet.doPost(mockRequest, mockResponse);
 
     ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
+    
     Mockito.verify(mockSession).setAttribute("error", "That username was not found.");
     Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
 /*

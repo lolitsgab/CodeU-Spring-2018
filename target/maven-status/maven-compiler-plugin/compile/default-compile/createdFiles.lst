@@ -5,6 +5,7 @@ codeu\model\data\Message.class
 codeu\model\store\persistence\PersistentDataStoreException.class
 codeu\model\data\User.class
 codeu\model\store\basic\UserStore.class
+codeu\controller\RegisterServlet.class
 codeu\model\store\basic\DefaultDataStore.class
 codeu\controller\LoginServlet.class
 codeu\model\store\basic\ConversationStore.class
