@@ -82,7 +82,7 @@ public class LoginServletTest {
     loginServlet.doPost(mockRequest, mockResponse);
 
     ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
-    
+
     Mockito.verify(mockSession).setAttribute("error", "That username was not found.");
     Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
 /*
@@ -122,9 +122,9 @@ public class LoginServletTest {
     Mockito.verify(mockSession).setAttribute("user", "test username");
     Mockito.verify(mockResponse).sendRedirect("/conversations");
   }
-}
 
-// adding a test for an invalid passwor
+
+// adding a test for an invalid password
 @Test
 public void TestdoPost_InvalidPassword() throw IOException, ServletException {
   Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
@@ -149,4 +149,5 @@ public void TestdoPost_InvalidPassword() throw IOException, ServletException {
   Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
 
 
+}
 }
