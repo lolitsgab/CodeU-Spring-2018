@@ -136,6 +136,8 @@ public void TestdoPost_InvalidPassword() throws IOException, ServletException {
   Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(true);
 
   // test username's password should be testpassword not bad password
+  ArgumentCaptor<User> passwordArgumentCaptor = ArgumentCaptor.forClass(User.class);
+  Mockito.verify(password).getPassword(passwordArgumentCaptor.capture());
   Mockito.when(password.equals()).thenReturn(false);
 
   loginServlet.setUserStore(mockUserStore);
