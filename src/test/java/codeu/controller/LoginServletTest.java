@@ -106,10 +106,12 @@ public class LoginServletTest {
     Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(true);
 
     // when user calls get password should return testpassword
+    Users mockUser = Mockito.mock(User.class);
+    Mockito.when(mockUser.getPassword()).thenReturn("testpassword");
     //ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
-    //Mockito.verify(mockUserStore).getPassword(userArgumentCaptor.capture());
+    //Mockito.verify(mockUser).getPassword(userArgumentCaptor.capture());
     //Assert.assertEquals(passwordArgumentCaptor.getValue().getPassword(), "testpassword");
-    Mockito.when(password.equals()).thenReturn(true); // not sure if it should be password.equals
+    //Mockito.when(password.equals()).thenReturn(true); // not sure if it should be password.equals
 
     loginServlet.setUserStore(mockUserStore);
 
@@ -135,11 +137,14 @@ public void TestdoPost_InvalidPassword() throws IOException, ServletException {
   UserStore mockUserStore = Mockito.mock(UserStore.class);
   Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(true);
 
+
   // test username's password should be testpassword not bad password
+  Users mockUser = Mockito.mock(User.class);
+  Mockito.when(mockUser.getPassword()).thenReturn("testpassword");
   //ArgumentCaptor<User> passwordArgumentCaptor = ArgumentCaptor.forClass(User.class);
   //String password = passwordArgumentCaptor.getValue().getPassword();
   //Mockito.verify(password).getPassword(passwordArgumentCaptor.capture());
-  Mockito.when(password.equals()).thenReturn(false);
+  //Mockito.when(password.equals()).thenReturn(false);
 
   loginServlet.setUserStore(mockUserStore);
 
