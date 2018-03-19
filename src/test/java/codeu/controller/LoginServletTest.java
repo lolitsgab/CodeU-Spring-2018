@@ -76,12 +76,8 @@ public class LoginServletTest {
     Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(false);
     loginServlet.setUserStore(mockUserStore);
 
-    //HttpSession mockSession = Mockito.mock(HttpSession.class);
-    //Mockito.when(mockRequest.getSession()).thenReturn(mockSession);
-
     loginServlet.doPost(mockRequest, mockResponse);
 
-    //ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
     Mockito.verify(mockRequest).setAttribute("error", "That username was not found.");
     Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
 /*
@@ -108,7 +104,6 @@ public class LoginServletTest {
     User mockUser = Mockito.mock(User.class);
     Mockito.when(mockUserStore.getUser("test username")).thenReturn(mockUser);
     Mockito.when(mockUser.getPassword()).thenReturn("testpassword");
-    //Mockito.when(mockRequest.getParameter("username").equals(mockUser.getPassword())).thenReturn(true);
     loginServlet.setUserStore(mockUserStore);
 
     HttpSession mockSession = Mockito.mock(HttpSession.class);
