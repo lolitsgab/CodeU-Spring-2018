@@ -1,70 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="codeu.model.store.basic.UserStoreTest" time="0.043" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="codeu.model.store.basic.UserStoreTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="9.0.4+11"/>
-    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib"/>
-    <property name="gopherProxySet" value="false"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/majin/Desktop/CodeU-Spring-2018"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-9.0.4\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\antso\CodeU-Spring-2018\CodeU-Spring-2018"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="path.separator" value=":"/>
+    <property name="path.separator" value=";"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/majin/Desktop/CodeU-Spring-2018"/>
+    <property name="user.dir" value="C:\Users\antso\CodeU-Spring-2018\CodeU-Spring-2018"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.runtime.version" value="9.0.4+11"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="os.arch" value="x86_64"/>
-    <property name="java.io.tmpdir" value="/var/folders/tv/hblczc3s08sc3xlzdqmwb34m0000gn/T/"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\antso\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="os.name" value="Mac OS X"/>
-    <property name="classworlds.conf" value="/Users/majin/Documents/apache-maven-3.5.2/bin/m2.conf"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/Users/majin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
-    <property name="maven.conf" value="/Users/majin/Documents/apache-maven-3.5.2/conf"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\Program Files\apache-maven-3.5.2-bin\apache-maven-3.5.2\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-9.0.4\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Dell\DW WLAN Card;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;c:\Program Files\WIDCOMM\Bluetooth Software\;c:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Python36;C:\Python\Scripts;C:\Program Files\MATLAB\R2016b\bin;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-9.0.4\bin;C:\Program Files\apache-maven-3.5.2-bin\apache-maven-3.5.2\bin;C:\Python36\Scripts\;C:\Python36\;C:\Users\antso\AppData\Local\Microsoft\WindowsApps;C:\MinGW\bin;C:\ProgramFiles\Java\jdk-9.0.4\bin;C:\Users\antso\AppData\Local\atom\bin;."/>
+    <property name="maven.conf" value="C:\Program Files\apache-maven-3.5.2-bin\apache-maven-3.5.2\bin\../conf"/>
     <property name="jdk.debug" value="release"/>
     <property name="java.class.version" value="53.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.13"/>
-    <property name="library.jansi.path" value="/Users/majin/Documents/apache-maven-3.5.2/lib/jansi-native"/>
-    <property name="user.home" value="/Users/majin"/>
-    <property name="user.timezone" value="US/Pacific"/>
-    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
-    <property name="file.encoding" value="UTF-8"/>
+    <property name="os.version" value="10.0"/>
+    <property name="library.jansi.path" value="C:\Program Files\apache-maven-3.5.2-bin\apache-maven-3.5.2\bin\..\lib\jansi-native"/>
+    <property name="user.home" value="C:\Users\antso"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="file.encoding" value="Cp1252"/>
     <property name="java.specification.version" value="9"/>
-    <property name="user.name" value="majin"/>
-    <property name="java.class.path" value="/Users/majin/Documents/apache-maven-3.5.2/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="user.name" value="Alison"/>
+    <property name="java.class.path" value="C:\Program Files\apache-maven-3.5.2-bin\apache-maven-3.5.2\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
     <property name="java.vm.specification.version" value="9"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
-    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-9.0.4"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.version" value="9.0.4"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="/Users/majin/Documents/apache-maven-3.5.2"/>
-    <property name="file.separator" value="/"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="maven.home" value="C:\Program Files\apache-maven-3.5.2-bin\apache-maven-3.5.2\bin\.."/>
+    <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testGetUser_byUsername_found" time="0.038"/>
-  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testAddUser" time="0.001"/>
-  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testIsUserRegistered_false" time="0.001"/>
+  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testGetUser_byUsername_found" time="0"/>
+  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testAddUser" time="0"/>
+  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testIsUserRegistered_false" time="0"/>
   <testcase classname="codeu.model.store.basic.UserStoreTest" name="testGetUser_byUsername_notFound" time="0"/>
-  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testIsUserRegistered_true" time="0.001"/>
-  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testGetUser_byId_notFound" time="0.001"/>
-  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testGetUser_byId_found" time="0.001"/>
+  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testIsUserRegistered_true" time="0"/>
+  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testGetUser_byId_notFound" time="0"/>
+  <testcase classname="codeu.model.store.basic.UserStoreTest" name="testGetUser_byId_found" time="0"/>
 </testsuite>

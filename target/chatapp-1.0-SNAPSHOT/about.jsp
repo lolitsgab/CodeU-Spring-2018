@@ -37,6 +37,18 @@
       style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
 
       <h1>About the CodeU Chat App</h1>
+
+      <p>
+        The Members of Team ABC:
+      </p>
+
+      <ul>
+        <li><strong>Alison Tsoi:</strong> Computer Science major at UC Irvine</li>
+        <li><strong>Celestine Co:</strong> Computer Engineering major at Cal Poly SLO</li>
+        <li><strong>Gabriel Raphael Garcia Montoya:</strong> Computer Science major at UC Santa Cruz</li>
+        <li><strong>Woojin Cheon:</strong> Mathematics major at UC San Diego</li>
+      </ul>
+
       <p>
         This is an example chat application designed to be a starting point
         for your CodeU project team work. Here's some stuff to think about:
