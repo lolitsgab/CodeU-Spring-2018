@@ -75,7 +75,7 @@ public class FeedServlet extends HttpServlet {
     // List<Event> events =
 
     // request.setAttribute("feed", events);
-    request.getRequestDispatcher("/WEB-INF/view/conversations.jsp").forward(request, response);
+    request.getRequestDispatcher("/WEB-INF/view/feed.jsp").forward(request, response);
   }
 
   /**
