@@ -76,4 +76,9 @@
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>FeedServlet</servlet-name>
+    <url-pattern>/feed</url-pattern>
+  </servlet-mapping>
+
 </web-app>
