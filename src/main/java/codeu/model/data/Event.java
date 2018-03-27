@@ -1,5 +1,8 @@
 package codeu.mode.data;
 
+import java.time.Instant;
+import java.util.UUID;
+
 /** Class representing an activity feed event. */
 public class Event {
   private final UUID id;
@@ -15,7 +18,7 @@ public class Event {
    * @param eventType the type of this Event
    * @param creation the creation time of this Event
    */
-  public User(UUID id, UUID eventUser, String eventType, Instant creation) {
+  public Event(UUID id, UUID eventUser, String eventType, Instant creation) {
     this.id = id;
     this.eventUser = eventUser;
     this.eventType = eventType;
