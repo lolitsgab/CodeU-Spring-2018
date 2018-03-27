@@ -30,7 +30,7 @@ List<Event> eventList = (List<Event>) request.getAttribute("feed");
         margin: 0px auto;
       }
       </style>
-      <script>
+      <script type="text/javascript">
       var currPos = 0;
       function moreFeed()
       {
@@ -38,31 +38,25 @@ List<Event> eventList = (List<Event>) request.getAttribute("feed");
         for(i = currPos; (i < eventList.size()) && (i <= (currPos + 10)); i++)
         {
           Event curEvent = eventList.get(i);
-          switch(curEvent)
+          String author = curEvent.getEventUserid();
+          switch(curEvent.getEventType())
           {
             case "new_msg":
-            String author = curEvent.getEventUserid();
             String content = curEvent.getMsgContent();
             //Instant timeStamp = curEvent.getCreationtTime()
-            %>
-            <li><strong><%= author %>:</strong> <%= content %></li>
-            <%
+            <li><strong>= author :</strong> = content </li>
             break;
             case "new_reg":
-            String author = curEvent.getEventUserid();
-            author += " just registered! Say hello!"
+            author += " just registered! Say hello!";
             //Instant timeStamp = curEvent.getCreationtTime()
-            %>
-            <li><strong><%= author %>:</strong></li>
-            <%
+            <li><strong>= author :</strong></li>
             break;
             case "new_conv":
-            String author = curEvent.getEventUserid();
             String content = curEvent.getConvTitle();
             //Instant timeStamp = curEvent.getCreationtTime()
-            %>
-            <li><strong><%= author %>:</strong> <%= content %></li>
-            <%
+            <li><strong>= author :</strong> = content </li>
+            break;
+            default:
             break;
             /*case "new_like":
             break;*/
@@ -70,6 +64,7 @@ List<Event> eventList = (List<Event>) request.getAttribute("feed");
 
         }
         currPos = i;
+
       }
       function scrollFeed()
       {
@@ -88,9 +83,9 @@ List<Event> eventList = (List<Event>) request.getAttribute("feed");
       <%@ include file = "header.jsp" %>
       <div id="feedDiv">
         <h1>Feed<hr/>
-        <%
-        moreFeed()
-        %>
+        <script type="text/javascript">
+        moreFeed();
+        </script>
 
 
       </div>
