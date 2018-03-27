@@ -1,6 +1,6 @@
 package codeu.controller;
 
-import codeu.mode.data.Event;
+import codeu.model.data.Event;
 import codeu.model.data.User;
 import codeu.model.data.Message;
 import codeu.model.data.Conversation;
@@ -8,6 +8,7 @@ import codeu.model.store.basic.UserStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.ConversationStore;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.ServletException;
@@ -50,7 +51,7 @@ public class FeedServlet extends HttpServlet {
    * a common setup method for use by the test framework or the
    * servlet's init() function.
    */
-  void setMessageStore(Message messageStore) {
+  void setMessageStore(MessageStore messageStore) {
     this.messageStore = messageStore;
   }
 
@@ -70,6 +71,11 @@ public class FeedServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
 
+    // Compile list of eventUser
+    // List<Event> events =
+
+    // request.setAttribute("feed", events);
+    request.getRequestDispatcher("/WEB-INF/view/conversations.jsp").forward(request, response);
   }
 
   /**
