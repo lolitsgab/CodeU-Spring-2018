@@ -1,6 +1,6 @@
 package codeu.controller;
 
-import codeu.mode.data.Event;
+import codeu.model.data.Event;
 import codeu.model.data.User;
 import codeu.model.data.Message;
 import codeu.model.data.Conversation;
@@ -50,7 +50,7 @@ public class FeedServlet extends HttpServlet {
    * a common setup method for use by the test framework or the
    * servlet's init() function.
    */
-  void setMessageStore(Message messageStore) {
+  void setMessageStore(MessageStore messageStore) {
     this.messageStore = messageStore;
   }
 
