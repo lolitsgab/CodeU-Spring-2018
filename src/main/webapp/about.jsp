@@ -21,16 +21,7 @@
 </head>
 <body>
 
-  <nav>
-    <a id="navTitle" href="/">CodeU Chat App</a>
-    <a href="/conversations">Conversations</a>
-    <% if(request.getSession().getAttribute("user") != null){ %>
-      <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-    <% } else{ %>
-      <a href="/login">Login</a>
-    <% } %>
-    <a href="/about.jsp">About</a>
-  </nav>
+  <%@ include file = "/WEB-INF/view/header.jsp" %>
 
   <div id="container">
     <div
@@ -46,7 +37,7 @@
         <li><strong>Alison Tsoi:</strong> Computer Science major at UC Irvine</li>
         <li><strong>Celestine Co:</strong> Computer Engineering major at Cal Poly SLO</li>
         <li><strong>Gabriel Raphael Garcia Montoya:</strong> Computer Science major at UC Santa Cruz</li>
-        <li><strong>Woojin Cheon:</strong> Mathematics major at UC San Diego</li>
+        <li><strong>Woojin Cheon:</strong> Mathematics - Computer Science major at UC San Diego</li>
       </ul>
 
       <p>
