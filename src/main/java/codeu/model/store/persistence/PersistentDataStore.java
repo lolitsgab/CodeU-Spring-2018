@@ -17,6 +17,7 @@ package codeu.model.store.persistence;
 import codeu.model.data.Conversation;
 import codeu.model.data.Message;
 import codeu.model.data.User;
+import codeu.model.data.Profile;
 import codeu.model.store.persistence.PersistentDataStoreException;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -146,6 +147,39 @@ public class PersistentDataStore {
     return messages;
   }
 
+  /**
+   * Loads all Profile objects from the Datastore service and returns them in a List.
+   *
+   * @throws PersistentDataStoreException if an error was detected during the load from the
+   *     Datastore service
+   */
+  public List<Profile> loadProfiles() throws PersistentDataStoreException {
+
+    List<Profile> profiles = new ArrayList<>();
+
+    // Retrieve all conversations from the datastore.
+    Query query = new Query("chat-profiles");
+    PreparedQuery results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      try {
+        UUID uuid = UUID.fromString((String) entity.getProperty("uuid"));
+        String name = (String) entity.getProperty("user_profile");
+        String about_me = (String) entity.getProperty("about_me");
+        Profile profile = new Profile(uuid, name, about_me);
+        profiles.add(profile);
+      } catch (Exception e) {
+        // In a production environment, errors should be very rare. Errors which may
+        // occur include network errors, Datastore service errors, authorization errors,
+        // database entity definition mismatches, or service mismatches.
+        throw new PersistentDataStoreException(e);
+      }
+    }
+
+    return profiles;
+  }
+
+
   /** Write a User object to the Datastore service. */
   public void writeThrough(User user) {
     Entity userEntity = new Entity("chat-users");
@@ -175,5 +209,14 @@ public class PersistentDataStore {
     conversationEntity.setProperty("title", conversation.getTitle());
     conversationEntity.setProperty("creation_time", conversation.getCreationTime().toString());
     datastore.put(conversationEntity);
+  }
+
+  /** Write a Profile  object to the Datastore service. */
+  public void writeThrough(Profile profile) {
+    Entity ProfileEntity = new Entity("chat-profiles");
+    ProfileEntity.setProperty("uuid", profile.getId().toString());
+    ProfileEntity.setProperty("user_profile", profile.getUserName());
+    ProfileEntity.setProperty("about_me", profile.getAboutMe());
+    datastore.put(ProfileEntity);
   }
 }
