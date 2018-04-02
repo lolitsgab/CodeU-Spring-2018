@@ -2,10 +2,16 @@
 Profile page
 --%>
 
+<%@ page import="codeu.model.data.Profile" %>
+<%@ page import="codeu.model.store.basic.ProfileStore" %>
+<%
+Profile profile = (Profile) request.getAttribute("profile");
+String profileName = (String) request.getAttribute("profileName");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Profile Page</title>
+  <title><%=profile.getUserName()%></title>
   <link rel="stylesheet" href="/css/main.css">
     <style>
       label {
@@ -18,37 +24,28 @@ Profile page
 <body>
   <%@ include file = "header.jsp" %>
   <div id="container">
-  <h1>Test Profile Page</h1>
-<%-- This will change currently just testing out to see if the users is logged
-in what a sample profile page might look like but I know this part isn't correct yet
+  <h1><%=profile.getUserName()%>'s Profile Page</h1>
 
-  <%if ( request.getAttribute("current_user")  == request.getSession().getAttribute("user")){ %>
-  <li> I am the current user </li>
-  <a> Session User: <%= request.getSession().getAttribute("user") %></a>
-  <a> Current User: <%=  request.getAttribute("current_user") %> </a>
-  <%}
-  else{ %>
-  <li> I am not the current user </li>
-  <a> Session User: <%= request.getSession().getAttribute("user") %></a>
-  <a> Current User: <%=  request.getAttribute("current_user") %> </a>
-  <%} %>
---%>
-  <% if(request.getSession().getAttribute("user") != null){ %>
-    <a><strong> About <%= request.getSession().getAttribute("user") %> </strong></a>
-    <hr/>
-    <li> <strong>Edit your profile here! </strong></li>
-    <textarea rows="4" cols="100">
+  <% if(request.getSession().getAttribute("user") != null && request.getSession().getAttribute("user").equals(profileName) ){ %>
+    <form action="/users/<%= profile.getUserName() %>" method="POST">
+      <a><strong> About  <%= profileName %> </strong></a>
+      <hr/>
+      <li> <strong>Edit your profile here! </strong></li>
+      <textarea rows="4" cols="100">
 Edit Profile information would go here
-  </textarea>
-  <br/>
-  <button type="submit">Submit</button>
-  <hr/>
+    </textarea>
+    <br/>
+    <button type="submit">Submit</button>
+    <hr/>
+    <%-- when you hit the sumbit button goes into Get method not Post and thinks that the profiles are no longer similar --%>
+ </form>
 
   <% }
   else{ %>
-    <li> This is a test profile page not linked to anyone specific please log in and come back to see what page might look like. </li>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
+  <a><strong> About <%= profile.getUserName() %> </strong></a>
+  <a> Session User: <%= request.getSession().getAttribute("user") %></a>
+  <a> Profile: <%=  profileName %> </a>
+  <hr/>
   <% } %>
 </div>
 </body>

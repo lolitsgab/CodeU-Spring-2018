@@ -51,23 +51,6 @@ public class ProfileStore{
     profiles = new ArrayList<>();
   }
 
-  /**
-   * Load a set of randomly-generated Message objects.
-   *
-   * @return false if an error occurs.
-
-  public boolean loadTestData() {
-    boolean loaded = false;
-    try {
-      messages.addAll(DefaultDataStore.getInstance().getAllMessages());
-      loaded = true;
-    } catch (Exception e) {
-      loaded = false;
-      System.out.println("ERROR: Unable to establish initial store (messages).");
-    }
-    return loaded;
-  }
-  */
 
   /** Add a newprofile to the current set of profiles */
   public void addProfile(Profile profile) {
@@ -75,6 +58,21 @@ public class ProfileStore{
     persistentStorageAgent.writeThrough(profile);
   }
 
+  /** Find and return the Profile with the given username. */
+  public Profile getUserProfile(String username) {
+    for (Profile profile : profiles) {
+      System.out.println("Comparing: " + profile.getUserName() + username);
+      if (profile.getUserName().equals(username)) {
+        return profile;
+      }
+    }
+    return null;
+  }
+
+  /** Access the current set of profiles known to the application. */
+  public List<Profile> getAllProfiles() {
+    return profiles;
+  }
 
   /** Sets the List of Profiles stored by this ProfileStore. */
   public void setProfiles(List<Profile> profiles) {

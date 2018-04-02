@@ -7,6 +7,7 @@ import codeu.model.data.User;
 import codeu.model.data.Profile;
 import codeu.model.store.basic.ProfileStore;
 import codeu.model.store.basic.UserStore;
+import java.util.List;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.UUID;
@@ -54,6 +55,18 @@ public class ProfileServlet extends HttpServlet {
   @Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
   throws IOException, ServletException {
+    String requestUrl = request.getRequestURI();
+    String userProfile = requestUrl.substring("/users/".length());
+
+    Profile profile = profileStore.getUserProfile(userProfile);
+    if (profile == null) {
+      // couldn't find profile, redirect to home page (Idk where it should go)
+      System.out.println("Profile was null in doGEt: " + profile);
+      response.sendRedirect("/login");
+      return;
+    }
+    request.setAttribute("profile", profile);
+    request.setAttribute("profileName", profile.getUserName());
 		request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request,response);
   }
 
@@ -61,6 +74,32 @@ public class ProfileServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
+/*
+  All the print statements are hints that I am trying to fix and see if the sumbit button in
+  profile.jsp was printing null in this method of do post
+*/
+        String requestUrl = request.getRequestURI();
+        String userProfile = requestUrl.substring("/users/".length());
+        System.out.println("Profile Find: " + userProfile);
 
+        Profile profile = profileStore.getUserProfile(userProfile);
+
+        List<Profile> profiles = profileStore.getAllProfiles();
+        request.setAttribute("profiless", profiles);
+
+        System.out.println("All profiles: ");
+        for (Profile p : profiles)
+        {
+          System.out.println(p.getUserName());
+        }
+
+        System.out.println("HERE?" + userProfile);
+        if (profile == null) {
+          // couldn't find profile, redirect to home page (Idk where it should go)
+          System.out.println("Profile was null in doPost: " + profile);
+          response.sendRedirect("/login");
+          return;
+        }
+        response.sendRedirect("/users/" + profile);
   }
 }

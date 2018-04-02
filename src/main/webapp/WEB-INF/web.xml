@@ -83,7 +83,7 @@
 
   <servlet-mapping>
     <servlet-name>ProfileServlet</servlet-name>
-    <url-pattern>/users</url-pattern>
+    <url-pattern>/users/*</url-pattern>
   </servlet-mapping>
 
 
