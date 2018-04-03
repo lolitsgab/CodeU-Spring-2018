@@ -89,7 +89,7 @@ public class RegisterServlet extends HttpServlet {
    */
    Profile profile = new Profile( user.getId(), user.getName(), "");
    profileStore.addProfile(profile);
-   response.sendRedirect("/users/" + profile.getUserName());
-//   response.sendRedirect("/login");
+
+   response.sendRedirect("/login");
   }
 }
