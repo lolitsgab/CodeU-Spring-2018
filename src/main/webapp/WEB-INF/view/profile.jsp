@@ -31,9 +31,10 @@ String profileName = (String) request.getAttribute("profileName");
       <a><strong> About  <%= profileName %> </strong></a>
       <hr/>
       <li> <strong>Edit your profile here! </strong></li>
-      <textarea rows="4" cols="100">
+      <textarea rows="4" cols="100" id ="about_me_text">
 Edit Profile information would go here
     </textarea>
+
     <br/>
     <button type="submit">Submit</button>
     <hr/>

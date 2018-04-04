@@ -57,12 +57,22 @@ public class ProfileServlet extends HttpServlet {
   throws IOException, ServletException {
     String requestUrl = request.getRequestURI();
     String userProfile = requestUrl.substring("/users/".length());
+    System.out.println("Profile Find doGet: " + userProfile);
+
+    List<Profile> profiles = profileStore.getAllProfiles();
+    request.setAttribute("profiless", profiles);
+
+    System.out.println("All profiles: ");
+    for (Profile p : profiles)
+    {
+      System.out.println(p.getUserName());
+    }
 
     Profile profile = profileStore.getUserProfile(userProfile);
     if (profile == null) {
       // couldn't find profile, redirect to home page (Idk where it should go)
       System.out.println("Profile was null in doGEt: " + profile);
-      response.sendRedirect("/login");
+      //response.sendRedirect("/login");
       return;
     }
     request.setAttribute("profile", profile);
@@ -97,9 +107,9 @@ public class ProfileServlet extends HttpServlet {
         if (profile == null) {
           // couldn't find profile, redirect to home page (Idk where it should go)
           System.out.println("Profile was null in doPost: " + profile);
-          response.sendRedirect("/login");
+          //response.sendRedirect("/users");
           return;
         }
-        response.sendRedirect("/users/" + profile);
+        //response.sendRedirect("/users/" + profile);
   }
 }

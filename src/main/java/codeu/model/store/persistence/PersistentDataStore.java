@@ -213,10 +213,10 @@ public class PersistentDataStore {
 
   /** Write a Profile  object to the Datastore service. */
   public void writeThrough(Profile profile) {
-    Entity ProfileEntity = new Entity("chat-profiles");
-    ProfileEntity.setProperty("uuid", profile.getId().toString());
-    ProfileEntity.setProperty("user_profile", profile.getUserName());
-    ProfileEntity.setProperty("about_me", profile.getAboutMe());
-    datastore.put(ProfileEntity);
+    Entity profileEntity = new Entity("chat-profiles");
+    profileEntity.setProperty("uuid", profile.getId().toString());
+    profileEntity.setProperty("user_profile", profile.getUserName());
+    profileEntity.setProperty("about_me", profile.getAboutMe());
+    datastore.put(profileEntity);
   }
 }
