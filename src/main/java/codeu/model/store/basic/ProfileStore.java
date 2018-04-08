@@ -61,12 +61,18 @@ public class ProfileStore{
   /** Find and return the Profile with the given username. */
   public Profile getUserProfile(String username) {
     for (Profile profile : profiles) {
-      System.out.println("Comparing: " + profile.getUserName() + username);
       if (profile.getUserName().equals(username)) {
         return profile;
       }
     }
     return null;
+  }
+
+ /** change the about_me in profile */
+  public void changeProfile(String username, String newProfile){
+    Profile profile = getUserProfile(username);
+    profile.changeAboutMe(newProfile);
+    persistentStorageAgent.writeThrough(profile);
   }
 
   /** Access the current set of profiles known to the application. */

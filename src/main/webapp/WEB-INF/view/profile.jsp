@@ -25,29 +25,33 @@ String profileName = (String) request.getAttribute("profileName");
   <%@ include file = "header.jsp" %>
   <div id="container">
   <h1><%=profile.getUserName()%>'s Profile Page</h1>
+  <hr/>
+  <a><strong> About <%= profile.getUserName() %> </strong></a>
+  <p id = "profileInfo"> <%= profile.getAboutMe() %></p>
+  <br/>
 
   <% if(request.getSession().getAttribute("user") != null && request.getSession().getAttribute("user").equals(profileName) ){ %>
-    <form action="/users/<%= profile.getUserName() %>" method="POST">
-      <a><strong> About  <%= profileName %> </strong></a>
-      <hr/>
-      <li> <strong>Edit your profile here! </strong></li>
-      <textarea rows="4" cols="100" id ="about_me_text">
+      <form action="/users/<%= profile.getUserName() %>" method="POST">
+      <p><strong>Edit your profile here! (only you can see this) </strong></p>
+      <textarea rows="4" cols="100" id ="aboutMeText" name = "profileContent">
 Edit Profile information would go here
     </textarea>
-
     <br/>
-    <button type="submit">Submit</button>
-    <hr/>
-    <%-- when you hit the sumbit button goes into Get method not Post and thinks that the profiles are no longer similar --%>
+    <button type="submit" onclick= "newProfile()">Update</button>
+    <p id = "test"> </p>
  </form>
 
+ <script>
+  function newProfile(){
+   document.getElementById("profileInfo").innerHTML = document.getElementById("aboutMeText").value;
+ }
+ </script>
   <% }
   else{ %>
-  <a><strong> About <%= profile.getUserName() %> </strong></a>
-  <a> Session User: <%= request.getSession().getAttribute("user") %></a>
-  <a> Profile: <%=  profileName %> </a>
-  <hr/>
+    <a> Session User: <%= request.getSession().getAttribute("user") %></a>
+    <a> Profile: <%=  profileName %> </a>
   <% } %>
+  <hr/>
 </div>
 </body>
 </html>
