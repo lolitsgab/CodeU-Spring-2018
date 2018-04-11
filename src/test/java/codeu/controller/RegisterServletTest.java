@@ -1,6 +1,8 @@
 package codeu.controller;
 
 import codeu.model.data.User;
+import codeu.model.data.Profile;
+import codeu.model.store.basic.ProfileStore;
 import codeu.model.store.basic.UserStore;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -50,9 +52,8 @@ public class RegisterServletTest {
  }
 /*
 FIX LATER!!!!!!!!!!!!!!! commented out for now because nullptr error when new register because need to add in the profile part
-i commented this out because i was testing things and am not 100% sure if its right yet 
+i commented this out because i was testing things and am not 100% sure if its right yet  */
  @Test
-
  public void testDoPost_NewUser() throws IOException, ServletException {
    Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
    Mockito.when(mockRequest.getParameter("password")).thenReturn("password two");
@@ -61,6 +62,9 @@ i commented this out because i was testing things and am not 100% sure if its ri
    Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(false);
    registerServlet.setUserStore(mockUserStore);
 
+   ProfileStore mockProfileStore = Mockito.mock(ProfileStore.class);
+   registerServlet.setProfileStore(mockProfileStore);
+   
    registerServlet.doPost(mockRequest, mockResponse);
 
    ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
@@ -69,9 +73,14 @@ i commented this out because i was testing things and am not 100% sure if its ri
    Assert.assertEquals(userArgumentCaptor.getValue().getName(), "test username");
    Assert.assertEquals(userArgumentCaptor.getValue().getPassword(), "password two");
 
+
+   ArgumentCaptor<Profile> profileArgumentCaptor = ArgumentCaptor.forClass(Profile.class);
+   Mockito.verify(mockProfileStore).addProfile(profileArgumentCaptor.capture());
+   Assert.assertEquals(profileArgumentCaptor.getValue().getUserName(), "test username");
+
    Mockito.verify(mockResponse).sendRedirect("/login");
  }
-*/
+
  @Test
  public void testDoPost_ExistingUser() throws IOException, ServletException {
    Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");

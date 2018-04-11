@@ -72,7 +72,8 @@ public class ProfileStore{
   public void changeProfile(String username, String newProfile){
     Profile profile = getUserProfile(username);
     profile.changeAboutMe(newProfile);
-    persistentStorageAgent.writeThrough(profile);
+    //persistentStorageAgent.writeThrough(profile);
+    persistentStorageAgent.writeChangeAboutMe(profile);
   }
 
   /** Access the current set of profiles known to the application. */

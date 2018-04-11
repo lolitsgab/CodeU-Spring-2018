@@ -34,7 +34,7 @@ String profileName = (String) request.getAttribute("profileName");
       <form action="/users/<%= profile.getUserName() %>" method="POST">
       <p><strong>Edit your profile here! (only you can see this) </strong></p>
       <textarea rows="4" cols="100" id ="aboutMeText" name = "profileContent">
-Edit Profile information would go here
+<%=profile.getAboutMe() %>
     </textarea>
     <br/>
     <button type="submit" onclick= "newProfile()">Update</button>
@@ -46,10 +46,6 @@ Edit Profile information would go here
    document.getElementById("profileInfo").innerHTML = document.getElementById("aboutMeText").value;
  }
  </script>
-  <% }
-  else{ %>
-    <a> Session User: <%= request.getSession().getAttribute("user") %></a>
-    <a> Profile: <%=  profileName %> </a>
   <% } %>
   <hr/>
 </div>

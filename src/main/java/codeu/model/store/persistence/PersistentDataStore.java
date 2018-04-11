@@ -157,7 +157,7 @@ public class PersistentDataStore {
 
     List<Profile> profiles = new ArrayList<>();
 
-    // Retrieve all conversations from the datastore.
+    // Retrieve all profiles from the datastore.
     Query query = new Query("chat-profiles");
     PreparedQuery results = datastore.prepare(query);
 
@@ -219,4 +219,33 @@ public class PersistentDataStore {
     profileEntity.setProperty("about_me", profile.getAboutMe());
     datastore.put(profileEntity);
   }
+
+  /** write the changed profile to the Datastore service. */
+  public void writeChangeAboutMe(Profile profile) {
+    System.out.println(" write change The profile is: " + profile.getUserName());
+
+    // Retrieve all profiles from the datastore to figure out which one to change
+    Query query = new Query("chat-profiles");
+    PreparedQuery results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      try {
+        UUID uuid = UUID.fromString((String) entity.getProperty("uuid"));
+        if (uuid.equals(profile.getId()))
+        {
+            //System.out.println("found entity by uuid: "+ uuid + profile.getId());
+            entity.setProperty("about_me", profile.getAboutMe());
+            datastore.put(entity);
+        }
+
+      } catch (Exception PersistentDataStoreException) {
+        // In a production environment, errors should be very rare. Errors which may
+        // occur include network errors, Datastore service errors, authorization errors,
+        // database entity definition mismatches, or service mismatches.
+        //throw new PersistentDataStoreException(e);
+      }
+    }
+  }
+
+
 }

@@ -35,6 +35,7 @@ public class ServerStartupListener implements ServletContextListener {
 
       List<Profile> profiles = PersistentStorageAgent.getInstance().loadProfiles();
       ProfileStore.getInstance().setProfiles(profiles);
+    
 
     } catch (PersistentDataStoreException e) {
       System.err.println("Server didn't start correctly. An error occurred during Datastore load!");
