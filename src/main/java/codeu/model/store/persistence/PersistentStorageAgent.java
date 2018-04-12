@@ -119,5 +119,9 @@ public class PersistentStorageAgent {
   public void writeThrough(Profile profile) {
     persistentDataStore.writeThrough(profile);
   }
-  
+
+  public void writeChangeAboutMe(Profile profile) {
+    persistentDataStore.writeChangeAboutMe(profile);
+  }
+
 }
