@@ -46,16 +46,16 @@
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white display-4" href="https://mobirise.com"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white display-4" href="/conversations"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
 
                         Conversations</a></li>
                 <li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="/conversations">
+                    <a class="nav-link link text-white display-4" href="/about.jsp">
                         <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
                         About Us
                     </a>
                 </li></ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/about.jsp"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>Sign in</a> <a class="btn btn-sm btn-primary display-4" href="https://mobirise.com"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>RegisterI</a></div>
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/login"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>Sign in</a> <a class="btn btn-sm btn-primary display-4" href="/register"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>Register</a></div>
         </div>
     </nav>
 </section>
