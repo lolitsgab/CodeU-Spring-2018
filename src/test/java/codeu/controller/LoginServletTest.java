@@ -27,6 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginServletTest {
 
@@ -100,6 +101,7 @@ during registration
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
     // adding mock password
     Mockito.when(mockRequest.getParameter("password")).thenReturn("testpassword");
+    String passwordHash = BCrypt.hashpw("testpassword", BCrypt.gensalt());
 
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
@@ -109,8 +111,7 @@ during registration
     // when user calls get password should return testpassword
     User mockUser = Mockito.mock(User.class);
     Mockito.when(mockUserStore.getUser("test username")).thenReturn(mockUser);
-    Mockito.when(mockUser.getPassword()).thenReturn("testpassword");
-    loginServlet.setUserStore(mockUserStore);
+    Mockito.when(mockUser.getPassword()).thenReturn(passwordHash);
 
 
     HttpSession mockSession = Mockito.mock(HttpSession.class);
@@ -130,6 +131,7 @@ public void TestdoPost_InvalidPassword() throws IOException, ServletException {
 
   // adding mock password
   Mockito.when(mockRequest.getParameter("password")).thenReturn("bad password");
+  String passwordHash = BCrypt.hashpw("testpassword", BCrypt.gensalt());
 
   UserStore mockUserStore = Mockito.mock(UserStore.class);
   Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(true);
@@ -138,7 +140,7 @@ public void TestdoPost_InvalidPassword() throws IOException, ServletException {
   // test username's password should be testpassword not bad password
   User mockUser = Mockito.mock(User.class);
   Mockito.when(mockUserStore.getUser("test username")).thenReturn(mockUser);
-  Mockito.when(mockUser.getPassword()).thenReturn("testpassword");
+  Mockito.when(mockUser.getPassword()).thenReturn(passwordHash);
 
   loginServlet.setUserStore(mockUserStore);
 
