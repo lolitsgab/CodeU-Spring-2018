@@ -27,6 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginServletTest {
 
@@ -52,6 +53,9 @@ public class LoginServletTest {
     Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
   }
 
+/*
+this test is no longer needed since it should be updated so that invalid usernames are check
+during registration
   @Test
   public void testDoPost_BadUsername() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("bad !@#$% username");
@@ -62,20 +66,26 @@ public class LoginServletTest {
         .setAttribute("error", "Please enter only letters, numbers, and spaces.");
     Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
   }
-
+*/
   @Test
   public void testDoPost_NewUser() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
+    // adding mock password
+    Mockito.when(mockRequest.getParameter("password")).thenReturn("testpassword");
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(false);
     loginServlet.setUserStore(mockUserStore);
 
-    HttpSession mockSession = Mockito.mock(HttpSession.class);
-    Mockito.when(mockRequest.getSession()).thenReturn(mockSession);
 
     loginServlet.doPost(mockRequest, mockResponse);
 
+    Mockito.verify(mockRequest).setAttribute("error", "That username was not found.");
+    Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
+/*
+
+    this section no longer needed as it verifies that the user was added to the Userstore when
+    I updated the LoginServlet so that it shows error that user was not found
     ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
 
     Mockito.verify(mockUserStore).addUser(userArgumentCaptor.capture());
@@ -83,15 +93,26 @@ public class LoginServletTest {
 
     Mockito.verify(mockSession).setAttribute("user", "test username");
     Mockito.verify(mockResponse).sendRedirect("/conversations");
+  */
   }
 
   @Test
   public void testDoPost_ExistingUser() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
+    // adding mock password
+    Mockito.when(mockRequest.getParameter("password")).thenReturn("testpassword");
+    String passwordHash = BCrypt.hashpw("testpassword", BCrypt.gensalt());
+
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(true);
     loginServlet.setUserStore(mockUserStore);
+
+    // when user calls get password should return testpassword
+    User mockUser = Mockito.mock(User.class);
+    Mockito.when(mockUserStore.getUser("test username")).thenReturn(mockUser);
+    Mockito.when(mockUser.getPassword()).thenReturn(passwordHash);
+
 
     HttpSession mockSession = Mockito.mock(HttpSession.class);
     Mockito.when(mockRequest.getSession()).thenReturn(mockSession);
@@ -99,8 +120,36 @@ public class LoginServletTest {
     loginServlet.doPost(mockRequest, mockResponse);
 
     Mockito.verify(mockUserStore, Mockito.never()).addUser(Mockito.any(User.class));
-
     Mockito.verify(mockSession).setAttribute("user", "test username");
     Mockito.verify(mockResponse).sendRedirect("/conversations");
   }
+
+  // adding a test for an invalid password
+@Test
+public void TestdoPost_InvalidPassword() throws IOException, ServletException {
+  Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
+
+  // adding mock password
+  Mockito.when(mockRequest.getParameter("password")).thenReturn("bad password");
+  String passwordHash = BCrypt.hashpw("testpassword", BCrypt.gensalt());
+
+  UserStore mockUserStore = Mockito.mock(UserStore.class);
+  Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(true);
+
+
+  // test username's password should be testpassword not bad password
+  User mockUser = Mockito.mock(User.class);
+  Mockito.when(mockUserStore.getUser("test username")).thenReturn(mockUser);
+  Mockito.when(mockUser.getPassword()).thenReturn(passwordHash);
+
+  loginServlet.setUserStore(mockUserStore);
+
+  loginServlet.doPost(mockRequest, mockResponse);
+
+  Mockito.verify(mockRequest).setAttribute("error", "Invalid password.");
+  Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
+
+
+  }
+
 }
