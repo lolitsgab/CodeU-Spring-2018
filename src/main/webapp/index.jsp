@@ -55,6 +55,7 @@
             project.</li>
         <li>You can <a href="/testdata">load test data</a> to fill the site with
             example data.</li>
+        <li>View a sample profile here: <a href = "/users/test"> profile page</a>. </li>
       </ul>
     </div>
   </div>
