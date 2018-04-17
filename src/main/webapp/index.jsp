@@ -19,9 +19,9 @@
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
+
+
+
 </head>
 <body>
   <section class="menu cid-qPqsYB3Xju" once="menu" id="menu1-e">
@@ -37,41 +37,41 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="https://mobirise.com">
+                    <a href="/">
                          <img src="assets/images/logo2.png" alt="Mobirise" style="height: 3.8rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="https://mobirise.com">
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/">
                         ABChat</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white display-4" href="https://mobirise.com"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
-                        
+
                         Conversations</a></li>
                 <li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="https://mobirise.com">
+                    <a class="nav-link link text-white display-4" href="/conversations">
                         <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
                         About Us
                     </a>
                 </li></ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="https://mobirise.com"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>Sign in</a> <a class="btn btn-sm btn-primary display-4" href="https://mobirise.com"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>RegisterI</a></div>
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/about.jsp"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>Sign in</a> <a class="btn btn-sm btn-primary display-4" href="https://mobirise.com"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>RegisterI</a></div>
         </div>
     </nav>
 </section>
 
-<section class="engine"><a href="https://mobirise.ws/n">free website builder app</a></section><section class="cid-qPqsYBHTzP mbr-fullscreen mbr-parallax-background" id="header2-f">
+<section class="engine"><a href="/login">free website builder app</a></section><section class="cid-qPqsYBHTzP mbr-fullscreen mbr-parallax-background" id="header2-f">
 
-    
 
-    
+
+
 
     <div class="container align-center">
         <div class="row justify-content-md-center">
             <div class="mbr-white col-md-10">
                 <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
                     Welcome to ABChat</h1>
-                
+
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">finally, a simple chat service</p>
                 <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="https://mobirise.com">LEARN MORE</a></div>
             </div>
@@ -86,9 +86,9 @@
 
 <section class="features18 popup-btn-cards cid-qPquUTPkvu" id="features18-h">
 
-    
 
-    
+
+
     <div class="container">
         <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
             Connect More.</h2>
@@ -153,16 +153,16 @@
                 </div>
             </div>
 
-            
+
         </div>
     </div>
 </section>
 
 <section class="cid-qPqsYC4BLN" id="footer1-g">
 
-    
 
-    
+
+
 
     <div class="container">
         <div class="media-container-row content text-white">
@@ -265,7 +265,7 @@
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
   <script src="assets/dropdown/js/script.min.js"></script>
   <script src="assets/theme/js/script.js"></script>
-  
-  
+
+
 </body>
 </html>
