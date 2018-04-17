@@ -85,6 +85,7 @@
     <servlet-name>FeedServlet</servlet-name>
     <url-pattern>/feed</url-pattern>
   </servlet-mapping>
+  <servlet>
     <servlet-name>ProfileServlet</servlet-name>
     <servlet-class>codeu.controller.ProfileServlet</servlet-class>
   </servlet>

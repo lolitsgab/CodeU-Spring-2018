@@ -1,6 +1,7 @@
 codeu/model/store/persistence/PersistentDataStoreException.class
 codeu/controller/ChatServlet.class
 codeu/model/data/User.class
+codeu/model/data/Profile.class
 codeu/model/store/basic/UserStore.class
 codeu/model/store/basic/DefaultDataStore.class
 codeu/controller/FeedServlet.class
@@ -15,4 +16,6 @@ codeu/model/store/basic/MessageStore.class
 codeu/model/store/persistence/PersistentStorageAgent.class
 codeu/controller/RegisterServlet.class
 codeu/controller/LoginServlet.class
+codeu/controller/ProfileServlet.class
+codeu/model/store/basic/ProfileStore.class
 codeu/model/store/persistence/PersistentDataStore.class
