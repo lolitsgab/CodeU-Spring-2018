@@ -55,16 +55,10 @@ public class PersistentDataStoreTest {
     // save
     persistentDataStore.writeThrough(inputUserOne);
 
-    //persistentDataStore.writeThrough(inputUserTwo);
+    persistentDataStore.writeThrough(inputUserTwo);
 
     // load
     List<User> resultUsers = persistentDataStore.loadUsers();
-
-
-    System.out.println(resultUsers);
-    for (User u : resultUsers){
-      System.out.println(u.getId());
-    }
 
     // confirm that what we saved matches what we loaded
     User resultUserOne = resultUsers.get(0);
@@ -72,18 +66,17 @@ public class PersistentDataStoreTest {
     Assert.assertEquals(password, resultUserOne.getPassword());
     Assert.assertEquals(nameOne, resultUserOne.getName());
     Assert.assertEquals(creationOne, resultUserOne.getCreationTime());
-  //  System.out.println("EMPTY CONVO " +convoOne);
-    //System.out.println("My CONVO " + resultUserOne.getMyConversations());
+
     Assert.assertEquals(convoOne, resultUserOne.getMyConversations());
 
-/*
+
     User resultUserTwo = resultUsers.get(1);
     Assert.assertEquals(idTwo, resultUserTwo.getId());
     Assert.assertEquals(password, resultUserTwo.getPassword());
     Assert.assertEquals(nameTwo, resultUserTwo.getName());
     Assert.assertEquals(creationTwo, resultUserTwo.getCreationTime());
     Assert.assertEquals(convoTwo, resultUserTwo.getMyConversations());
-    */
+
   }
 
   @Test
