@@ -60,7 +60,7 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="codeu.controller.TestDataServletTest" name="testDoGet" time="0.001"/>
-  <testcase classname="codeu.controller.TestDataServletTest" name="testDoPost_Cancel" time="0.002"/>
+  <testcase classname="codeu.controller.TestDataServletTest" name="testDoGet" time="0.002"/>
+  <testcase classname="codeu.controller.TestDataServletTest" name="testDoPost_Cancel" time="0.001"/>
   <testcase classname="codeu.controller.TestDataServletTest" name="testDoPost_Confirm" time="0.001"/>
 </testsuite>
