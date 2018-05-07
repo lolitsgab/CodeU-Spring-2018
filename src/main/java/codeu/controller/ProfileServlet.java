@@ -99,7 +99,7 @@ public class ProfileServlet extends HttpServlet {
 
         String requestUrl = request.getRequestURI();
         String userProfile = (String) requestUrl.substring("/users/".length());
-        System.out.println("Profile Find: " + userProfile);
+        //System.out.println("Profile Find: " + userProfile);
         Profile profile = profileStore.getUserProfile(userProfile);
 
         User profileUser = userStore.getUser(profile.getUserName());
@@ -127,7 +127,7 @@ public class ProfileServlet extends HttpServlet {
        }
        // if the user is logged in as a different user this if statement will execute
        else if ("directMessage".equals(action)){
-         System.out.println("direct messsage");
+        // System.out.println("direct messsage");
          String username = (String) request.getSession().getAttribute("user");
          if (username == null) {
            // user is not logged in, don't let them create a conversation
@@ -146,8 +146,6 @@ public class ProfileServlet extends HttpServlet {
 
          String conversationTitle = username + "-" + profile.getUserName();
          String reverseTitle = profile.getUserName() + "-" + username;
-
-         System.out.println(conversationTitle + " " +  reverseTitle);
 
          if (conversationStore.isTitleTaken(conversationTitle)) {
            // conversation title is already taken, just go into that conversation instead of creating a new one

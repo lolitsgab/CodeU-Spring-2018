@@ -66,11 +66,6 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
     <% } %>
 
 
-
-  <% for(int i = 0; i < profileUser.getMyConversations().size(); i+= 1 ) { %>
-      <p><%= profileUser.getMyConversations().get(i)%> </p>
-  <%}%>
-
   </div>
 
 </body>
