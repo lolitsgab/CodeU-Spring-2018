@@ -24,10 +24,12 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.Map;
 
 /**
  * This class handles all interactions with Google App Engine's Datastore service. On startup it
@@ -58,7 +60,7 @@ public class PersistentDataStore {
     List<User> users = new ArrayList<>();
 
     // Retrieve all users from the datastore.
-    Query query = new Query("chat-users");
+    Query query = new Query("chat-users").addSort("creation_time", SortDirection.ASCENDING);
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
@@ -67,7 +69,12 @@ public class PersistentDataStore {
         String userName = (String) entity.getProperty("username");
         String password = (String) entity.getProperty("password");
         Instant creationTime = Instant.parse((String) entity.getProperty("creation_time"));
-        User user = new User(uuid, userName, password, creationTime);
+        List<String> myConvos = (List<String>) entity.getProperty("my_convos");
+        //System.out.println(userName+ " list in loadUsers: " + myConvos);
+        if (myConvos == null){
+          myConvos = new ArrayList<>();
+        }
+        User user = new User(uuid, userName, password, creationTime, myConvos);
         users.add(user);
       } catch (Exception e) {
         // In a production environment, errors should be very rare. Errors which may
@@ -124,7 +131,7 @@ public class PersistentDataStore {
     List<Message> messages = new ArrayList<>();
 
     // Retrieve all messages from the datastore.
-    Query query = new Query("chat-messages");
+    Query query = new Query("chat-messages").addSort("creation_time", SortDirection.ASCENDING);;
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
@@ -182,12 +189,19 @@ public class PersistentDataStore {
 
   /** Write a User object to the Datastore service. */
   public void writeThrough(User user) {
-    Entity userEntity = new Entity("chat-users");
+    Entity userEntity = new Entity("chat-users" , user.getId().toString());
     userEntity.setProperty("uuid", user.getId().toString());
     userEntity.setProperty("username", user.getName());
     userEntity.setProperty("password", user.getPassword());
     userEntity.setProperty("creation_time", user.getCreationTime().toString());
+
+    //System.out.println("writing to dataStore: " + user.getMyConversations());
+    userEntity.setProperty("my_convos", user.getMyConversations());
     datastore.put(userEntity);
+
+
+  //  List<String> my_convos = (List<String>) userEntity.getProperty("my_convos");
+  //  System.out.println("list in write through: " + my_convos);
   }
 
   /** Write a Message object to the Datastore service. */

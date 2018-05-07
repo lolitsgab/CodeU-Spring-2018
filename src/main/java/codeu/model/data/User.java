@@ -16,12 +16,15 @@ package codeu.model.data;
 
 import java.time.Instant;
 import java.util.UUID;
+import java.util.List;
+import java.util.ArrayList;
 
 /** Class representing a registered user. */
 public class User {
   private final UUID id;
   private final String name, password;
   private final Instant creation;
+  private List<String> myConversations = new ArrayList<>();
 
   /**
    * Constructs a new User.
@@ -30,12 +33,14 @@ public class User {
    * @param name the username of this User
    * @param creation the creation time of this User
    * @param password password for the user
+   * @param myConversations list of titles for conversations User is in
    */
-  public User(UUID id, String name, String password, Instant creation) {
+  public User(UUID id, String name, String password, Instant creation, List<String> myConversation) {
     this.id = id;
     this.name = name;
     this.creation = creation;
     this.password = password;
+    this.myConversations = new ArrayList<>(myConversation);
   }
   /** Returns the password of this User. */
   public String getPassword(){
@@ -54,5 +59,18 @@ public class User {
   /** Returns the creation time of this User. */
   public Instant getCreationTime() {
     return creation;
+  }
+
+  /** Returns the conversations the User is in. */
+  public List<String> getMyConversations(){
+    //System.out.println("conversations" + myConversations);
+    return myConversations;
+  }
+
+  public void addConversation(String convoTitle){
+    myConversations.add(convoTitle);
+  //  System.out.println("Adding to convo"+ convoTitle);
+    System.out.println(myConversations);
+
   }
 }

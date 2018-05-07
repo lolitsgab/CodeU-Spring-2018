@@ -153,6 +153,11 @@ public class ChatServlet extends HttpServlet {
 
     messageStore.addMessage(message);
 
+    if (!user.getMyConversations().contains(conversation.getTitle()))
+    {
+      //System.out.println("adding to a chat");
+      userStore.changeMyConversations(user.getName(), conversation.getTitle());
+    }
     // redirect to a GET request
     response.sendRedirect("/chat/" + conversationTitle);
   }
