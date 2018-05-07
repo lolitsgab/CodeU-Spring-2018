@@ -4,9 +4,15 @@ Profile page
 
 <%@ page import="codeu.model.data.Profile" %>
 <%@ page import="codeu.model.store.basic.ProfileStore" %>
+<%@ page import="codeu.model.store.basic.UserStore" %>
+<%@ page import="codeu.model.data.User" %>
+<%@ page import="codeu.model.store.basic.ConversationStore" %>
+
 <%
 Profile profile = (Profile) request.getAttribute("profile");
 String profileName = (String) request.getAttribute("profileName");
+User profileUser = (User) request.getAttribute("profileUser");
+ConversationStore convoStore = (ConversationStore) request.getAttribute("convoStore");
 %>
 <!DOCTYPE html>
 <html>
@@ -35,19 +41,37 @@ String profileName = (String) request.getAttribute("profileName");
       <p><strong>Edit your profile here! (only you can see this) </strong></p>
       <textarea rows="4" cols="100" id ="aboutMeText" name = "profileContent">
 <%=profile.getAboutMe() %>
-    </textarea>
-    <br/>
-    <button type="submit" onclick= "newProfile()">Update</button>
-    <p id = "test"> </p>
- </form>
-
- <script>
-  function newProfile(){
-   document.getElementById("profileInfo").innerHTML = document.getElementById("aboutMeText").value;
- }
- </script>
+      </textarea>
+      <br/>
+      <button type="submit" name = "action" value = "changeProfile" onclick= "newProfile()">Update</button>
+      <p id = "test"> </p>
+    </form>
+    <script>
+      function newProfile(){
+      document.getElementById("profileInfo").innerHTML = document.getElementById("aboutMeText").value;
+      }
+    </script>
   <% } %>
+
   <hr/>
-</div>
+  <% if(request.getSession().getAttribute("user") != null) { %>
+    <form action="/users/<%= profile.getUserName() %>" method="POST">
+      <button type = "submit" name = "action" value = "directMessage" onclick = "directMessage()"> Message Me! </button>
+      <script>
+      function directMessage(){
+        document.getElementById("demo").innerHTML = "direct message clicked";
+      }
+      </script>
+    </form>
+    <% } %>
+
+
+
+  <% for(int i = 0; i < profileUser.getMyConversations().size(); i+= 1 ) { %>
+      <p><%= profileUser.getMyConversations().get(i)%> </p>
+  <%}%>
+
+  </div>
+
 </body>
 </html>

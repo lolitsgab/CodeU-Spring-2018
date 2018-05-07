@@ -18,6 +18,8 @@ import java.time.Instant;
 import java.util.UUID;
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.List;
+import java.util.ArrayList;
 
 public class UserTest {
 
@@ -27,12 +29,14 @@ public class UserTest {
     String name = "test_username";
     Instant creation = Instant.now();
     String password = "password";
+    List<String> myConversations = new ArrayList<>();
 
-    User user = new User(id, name, password, creation);
+    User user = new User(id, name, password, creation, myConversations);
 
     Assert.assertEquals(id, user.getId());
     Assert.assertEquals(name, user.getName());
     Assert.assertEquals(password, user.getPassword());
     Assert.assertEquals(creation, user.getCreationTime());
+    Assert.assertEquals(myConversations, user.getMyConversations());
   }
 }
