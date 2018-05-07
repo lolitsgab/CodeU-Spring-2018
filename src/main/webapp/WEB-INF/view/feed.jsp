@@ -25,44 +25,8 @@
 <style></style></head>
 <body style="">
   <section id="top-1" class="engine"><a href="https://mobirise.me">Mobirise</a> Mobirise v4.7.1</section>
-  <section class="menu cid-qPqsYB3Xju" once="menu" id="menu1-o">
+  <%@ include file = "header.jsp" %>
 
-
-
-    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm navbar-short">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </button>
-        <div class="menu-logo">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="https://mobirise.com">
-                         <img src="assets/images/logo2.png" alt="Mobirise" style="height: 3.8rem;">
-                    </a>
-                </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="https://mobirise.com">
-                        ABChat</a></span>
-            </div>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white display-4" href="/conversations"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
-
-                        Conversations</a></li>
-                <li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="/about.jsp">
-                        <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                        About Us
-                    </a>
-                </li></ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/login"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>Sign in</a> <a class="btn btn-sm btn-primary display-4" href="/register"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>RegisterI</a></div>
-        </div>
-    </nav>
-</section>
 
 <section class="engine"><a href="https://mobirise.ws/j">how to design free website</a></section><section class="mbr-section content5 cid-qPqRslUjlA mbr-parallax-background" id="content5-t" data-jarallax-original-styles="null" style="z-index: 0; position: relative; background-image: none; background-attachment: scroll; background-size: auto;">
 

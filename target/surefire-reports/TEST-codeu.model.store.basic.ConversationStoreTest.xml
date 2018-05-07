@@ -60,9 +60,9 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="codeu.model.store.basic.ConversationStoreTest" name="testAddConversation" time="0"/>
+  <testcase classname="codeu.model.store.basic.ConversationStoreTest" name="testAddConversation" time="0.001"/>
   <testcase classname="codeu.model.store.basic.ConversationStoreTest" name="testGetConversationWithTitle_found" time="0"/>
   <testcase classname="codeu.model.store.basic.ConversationStoreTest" name="testIsTitleTaken_false" time="0"/>
-  <testcase classname="codeu.model.store.basic.ConversationStoreTest" name="testGetConversationWithTitle_notFound" time="0.001"/>
+  <testcase classname="codeu.model.store.basic.ConversationStoreTest" name="testGetConversationWithTitle_notFound" time="0"/>
   <testcase classname="codeu.model.store.basic.ConversationStoreTest" name="testIsTitleTaken_true" time="0"/>
 </testsuite>
