@@ -14,11 +14,11 @@
        <div class="menu-logo">
            <div class="navbar-brand">
                <span class="navbar-logo">
-                   <a href="http://localhost:8080/">
+                   <a href="/">
                         <img src="/assets/images/logo2.png" alt="Mobirise" style="height: 3.8rem;">
                    </a>
                </span>
-               <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="http://localhost:8080/">
+               <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/">
                        ABChat</a></span>
            </div>
        </div>
