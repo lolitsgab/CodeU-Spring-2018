@@ -5,8 +5,10 @@ package codeu.controller;
 
 import codeu.model.data.User;
 import codeu.model.data.Profile;
+import codeu.model.data.Message;
 import codeu.model.store.basic.ProfileStore;
 import codeu.model.store.basic.UserStore;
+import codeu.model.store.basic.MessageStore;
 import java.util.List;
 import java.io.IOException;
 import java.time.Instant;
@@ -23,8 +25,11 @@ public class ProfileServlet extends HttpServlet {
   /** Store class that gives access to Users. */
   private UserStore userStore;
 
-  /** Store calls that gives access to Profiles.*/
+  /** Store class that gives access to Profiles. */
   private ProfileStore profileStore;
+
+  /** Store class that gives access to Messages. */
+  private MessageStore messageStore;
 
   /**
    * Set up state for handling login-related requests. This method is only called when running in a
@@ -35,6 +40,7 @@ public class ProfileServlet extends HttpServlet {
     super.init();
     setUserStore(UserStore.getInstance());
     setProfileStore(ProfileStore.getInstance());
+    setMessageStore(MessageStore.getInstance());
   }
 
   /**
@@ -51,7 +57,13 @@ public class ProfileServlet extends HttpServlet {
   void setProfileStore(ProfileStore profileStore) {
     this.profileStore = profileStore;
   }
-
+  /**
+   * Sets the MessageStore used by this servlet. This function provides a common setup method
+   * for use by the test framework or the servlet's init() function.
+   */
+  void setMessageStore(MessageStore messageStore) {
+    this.messageStore = messageStore;
+  }
 
 
   @Override
@@ -67,10 +79,17 @@ public class ProfileServlet extends HttpServlet {
       //response.sendRedirect("/login");
       return;
     }
+
+    // Retrieve all the messages by the user
+    User user = userStore.getUser(userProfile);
+    UUID authorId = user.getId();
+    List<Message> messages = messageStore.getMessagesByUser(authorId);
+    request.setAttribute("messages", messages);
+    
     //System.out.println("About Me GET=" + profile.getAboutMe());
     request.setAttribute("profile", profile);
     request.setAttribute("profileName", profile.getUserName());
-		request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request,response);
+    request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request,response);
   }
 
 
