@@ -74,19 +74,18 @@ public class ProfileServlet extends HttpServlet {
 
     Profile profile = profileStore.getUserProfile(userProfile);
     if (profile == null) {
-      // couldn't find profile, redirect to home page (Idk where it should go)
+      // couldn't find profile, redirect to login (Idk where it should go)
       System.out.println("Profile was null in doGEt: " + profile);
-      //response.sendRedirect("/login");
+      response.sendRedirect("/login");
       return;
     }
-
+    
     // Retrieve all the messages by the user
     User user = userStore.getUser(userProfile);
     UUID authorId = user.getId();
     List<Message> messages = messageStore.getMessagesByUser(authorId);
     request.setAttribute("messages", messages);
     
-    //System.out.println("About Me GET=" + profile.getAboutMe());
     request.setAttribute("profile", profile);
     request.setAttribute("profileName", profile.getUserName());
     request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request,response);
@@ -104,9 +103,9 @@ public class ProfileServlet extends HttpServlet {
         Profile profile = profileStore.getUserProfile(userProfile);
 
         if (profile == null) {
-          // couldn't find profile, redirect to home page (Idk where it should go)
+          // couldn't find profile, redirect to login (Idk where it should go)
           System.out.println("Profile was null in doPost: " + profile);
-          //response.sendRedirect("/users");
+          response.sendRedirect("/login"); // not sure if we want this to to display error message
           return;
         }
         else{
@@ -114,12 +113,9 @@ public class ProfileServlet extends HttpServlet {
 
         // this removes any HTML from the message content
         String cleanedProfileContent = Jsoup.clean(profileContent, Whitelist.none());
-        //System.out.println("Profile content = " + cleanedProfileContent);
-        //profile.changeAboutMe(cleanedProfileContent);
 
         profileStore.changeProfile(profile.getUserName(), cleanedProfileContent);
 
-      //  System.out.println("About Me in POST=" + profile.getAboutMe());
        }
        response.sendRedirect("/users/" + profile.getUserName());
   }

@@ -120,8 +120,5 @@ public class PersistentStorageAgent {
     persistentDataStore.writeThrough(profile);
   }
 
-  public void writeChangeAboutMe(Profile profile) {
-    persistentDataStore.writeChangeAboutMe(profile);
-  }
 
 }
