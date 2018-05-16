@@ -117,4 +117,14 @@ public class ConversationStore {
   public void setConversations(List<Conversation> conversations) {
     this.conversations = conversations;
   }
+/*
+  public List<Conversations> reverse(){
+    int list_size = conversations.size();
+    List<Conversations> reversed_list = new ArrayList<>();
+    for(int i = list_size-1; i >= 0; ++i){
+      reversed_list.add(conversations(list_size));
+    }
+    return reversed_list;
+  }
+  */
 }
