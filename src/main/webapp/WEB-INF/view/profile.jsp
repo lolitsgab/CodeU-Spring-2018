@@ -24,7 +24,7 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="/assets/images/logo2.png" type="image/x-icon">
   <meta name="description" content="Web Site Builder Description">
-  <title>Log In</title>
+  <title>Profile </title>
   <link rel="stylesheet" href="/assets/web//assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="/assets/web//assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="/assets/tether/tether.min.css">
@@ -49,21 +49,24 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
 
     <div class="container align-center">
 <div >
-  <div id="container">
-  <h1><%=profile.getUserName()%>'s Profile Page</h1>
+  <div class="mbr-white col-lg-8 col-md-7 container align-center" id="container">
+  <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1"><%=profile.getUserName()%>'s Profile Page!</h1>
   <hr/>
-  <a><strong> About <%= profile.getUserName() %> </strong></a>
-  <p id = "profileInfo"> <%= profile.getAboutMe() %></p>
+  <p class="mbr-text pb-3 mbr-fonts-style display-5"><strong>
+     About <%= profile.getUserName() %> </strong></p>
+
+  <p class="mbr-text pb-3 mbr-fonts-style display-5" id = "profileInfo"> <%= profile.getAboutMe() %></p>
   <br/>
 
   <% if(request.getSession().getAttribute("user") != null && request.getSession().getAttribute("user").equals(profileName) ){ %>
       <form action="/users/<%= profile.getUserName() %>" method="POST">
-      <p><strong>Edit your profile here! (only you can see this) </strong></p>
+      <p class="mbr-text pb-3 mbr-fonts-style display-5" ><strong>Edit your profile here! (only you can see this) </strong></p>
       <textarea rows="4" cols="100" id ="aboutMeText" name = "profileContent">
 <%=profile.getAboutMe() %>
       </textarea>
       <br/>
-      <button type="submit" name = "action" value = "changeProfile" onclick= "newProfile()">Update</button>
+
+      <button type="submit" name = "action" class="btn btn-sm btn-secondary display-4" value = "changeProfile" onclick= "newProfile()">Update</button>
       <p id = "test"> </p>
     </form>
     <script>
@@ -76,7 +79,7 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
   <hr/>
   <% if(request.getSession().getAttribute("user") != null) { %>
     <form action="/users/<%= profile.getUserName() %>" method="POST">
-      <button type = "submit" name = "action" value = "directMessage" onclick = "directMessage()"> Message Me! </button>
+      <button type = "submit" name = "action" class="btn btn-sm btn-secondary display-4"value = "directMessage" onclick = "directMessage()"> Message Me! </button>
       <script>
       function directMessage(){
         document.getElementById("demo").innerHTML = "direct message clicked";
