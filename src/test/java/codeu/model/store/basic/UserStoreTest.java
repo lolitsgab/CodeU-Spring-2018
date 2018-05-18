@@ -16,12 +16,17 @@ public class UserStoreTest {
   private UserStore userStore;
   private PersistentStorageAgent mockPersistentStorageAgent;
 
+  private final List<String> convoOne = new ArrayList<>();
+  private final List<String> convoTwo = new ArrayList<>();
+  private final List<String> convoThree = new ArrayList<>();
+
+
   private final User USER_ONE =
-      new User(UUID.randomUUID(), "test_username_one", "password", Instant.ofEpochMilli(1000));
+      new User(UUID.randomUUID(), "test_username_one", "password", Instant.ofEpochMilli(1000),convoOne );
   private final User USER_TWO =
-      new User(UUID.randomUUID(), "test_username_two", "password",Instant.ofEpochMilli(2000));
+      new User(UUID.randomUUID(), "test_username_two", "password",Instant.ofEpochMilli(2000), convoTwo);
   private final User USER_THREE =
-      new User(UUID.randomUUID(), "test_username_three", "password", Instant.ofEpochMilli(3000));
+      new User(UUID.randomUUID(), "test_username_three", "password", Instant.ofEpochMilli(3000), convoThree);
 
   @Before
   public void setup() {
@@ -65,7 +70,8 @@ public class UserStoreTest {
 
   @Test
   public void testAddUser() {
-    User inputUser = new User(UUID.randomUUID(), "test_username", "password", Instant.now());
+    List<String> convo = new ArrayList<>();
+    User inputUser = new User(UUID.randomUUID(), "test_username", "password", Instant.now(), convo);
 
     userStore.addUser(inputUser);
     User resultUser = userStore.getUser("test_username");
@@ -89,5 +95,6 @@ public class UserStoreTest {
     Assert.assertEquals(expectedUser.getName(), actualUser.getName());
     Assert.assertEquals(expectedUser.getPassword(), actualUser.getPassword());
     Assert.assertEquals(expectedUser.getCreationTime(), actualUser.getCreationTime());
+    Assert.assertEquals(expectedUser.getMyConversations(), actualUser.getMyConversations());
   }
 }

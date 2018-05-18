@@ -113,7 +113,13 @@ public class UserStore {
     }
     return false;
   }
+  /** add to the conversation variable of the user */
+   public void changeMyConversations(String username, String convoTitle){
+     User user= getUser(username);
+     user.addConversation(convoTitle);
+     persistentStorageAgent.writeThrough(user);
 
+   }
   /**
    * Sets the List of Users stored by this UserStore. This should only be called once, when the data
    * is loaded from Datastore.

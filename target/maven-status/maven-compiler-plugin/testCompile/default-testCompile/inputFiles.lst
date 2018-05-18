@@ -1,12 +1,14 @@
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/store/basic/UserStoreTest.java
-/Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/store/persistence/PersistentStorageAgentTest.java
+/Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/controller/RegisterServletTest.java
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/data/MessageTest.java
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/store/persistence/PersistentDataStoreTest.java
-/Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/controller/ChatServletTest.java
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/data/UserTest.java
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/data/ConversationTest.java
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/store/basic/ConversationStoreTest.java
+/Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/store/basic/MessageStoreTest.java
+/Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/store/persistence/PersistentStorageAgentTest.java
+/Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/data/EventTest.java
+/Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/controller/ChatServletTest.java
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/controller/LoginServletTest.java
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/controller/TestDataServletTest.java
-/Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/model/store/basic/MessageStoreTest.java
 /Users/majin/Desktop/CodeU-Spring-2018/src/test/java/codeu/controller/ConversationServletTest.java

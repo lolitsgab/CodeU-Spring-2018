@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class RegisterServletTest {
 
@@ -57,6 +58,7 @@ i commented this out because i was testing things and am not 100% sure if its ri
  public void testDoPost_NewUser() throws IOException, ServletException {
    Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
    Mockito.when(mockRequest.getParameter("password")).thenReturn("password two");
+   String passwordHash = BCrypt.hashpw("password two", BCrypt.gensalt());
 
    UserStore mockUserStore = Mockito.mock(UserStore.class);
    Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(false);
@@ -71,7 +73,7 @@ i commented this out because i was testing things and am not 100% sure if its ri
 
    Mockito.verify(mockUserStore).addUser(userArgumentCaptor.capture());
    Assert.assertEquals(userArgumentCaptor.getValue().getName(), "test username");
-   Assert.assertEquals(userArgumentCaptor.getValue().getPassword(), "password two");
+   Assert.assertTrue(BCrypt.checkpw("password two", passwordHash));
 
 
    ArgumentCaptor<Profile> profileArgumentCaptor = ArgumentCaptor.forClass(Profile.class);

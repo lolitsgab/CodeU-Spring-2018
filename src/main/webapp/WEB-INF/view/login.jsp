@@ -1,50 +1,87 @@
-<%--
-  Copyright 2017 Google Inc.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
---%>
 <!DOCTYPE html>
-<html>
+<html >
 <head>
-  <title>Login</title>
-  <link rel="stylesheet" href="/css/main.css">
-  <style>
-    label {
-      display: inline-block;
-      width: 100px;
-    }
-  </style>
+  <!-- Site made with Mobirise Website Builder v4.7.1, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.7.1, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
+  <meta name="description" content="Web Site Builder Description">
+  <title>Log In</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+
 </head>
 <body>
-
   <%@ include file = "header.jsp" %>
 
-  <div id="container">
-    <h1>Login</h1>
+<section class="engine"><a href="https://mobirise.ws/i">build your own website</a></section><section class="cid-qPqDt9J72L mbr-fullscreen" data-bg-video="https://www.youtube.com/watch?v=Q7tGuUz8_0s" id="header15-k">
 
-    <% if(request.getAttribute("error") != null){ %>
-        <h2 style="color:red"><%= request.getAttribute("error") %></h2>
-    <% } %>
 
-    <form action="/login" method="POST">
-      <label for="username">Username: </label>
-      <input type="text" name="username" id="username">
-      <br/>
-      <label for="password">Password: </label>
-      <input type ="password" name="password" id="password">
-      <br/><br/>
-      <button type="submit">Login</button>
-    </form>
-  </div>
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(7, 59, 76);"></div>
+
+    <div class="container align-right">
+<div class="row">
+    <div class="mbr-white col-lg-8 col-md-7 content-container">
+        <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Hey! You are back!</h1>
+        <p class="mbr-text pb-3 mbr-fonts-style display-5">
+            Go ahead and sign in!</p>
+    </div>
+    <div class="col-lg-4 col-md-5">
+
+    <div class="form-container">
+        <div class="media-container-column" data-form-type="formoid">
+          <% if(request.getAttribute("error") != null){ %>
+              <h2 style="color:red"><%= request.getAttribute("error") %></h2>
+          <% } %>
+            <form class="mbr-form" action="/login" method="POST">
+
+
+                    <div class="form-group">
+                        <input type="text" class="form-control px-3" name="username" placeholder="username" required="" id="username">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control px-3" name="password" placeholder="Password" id="password">
+                </div>
+
+                <span class="input-group-btn"><button href="" type="submit" class="btn btn-secondary btn-form display-4">Sign In</button></span>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+    </div>
+    <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+        <a href="#next">
+            <i class="mbri-down mbr-iconfont"></i>
+        </a>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/ytplayer/jquery.mb.ytplayer.min.js"></script>
+  <script src="assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+
+
 </body>
 </html>

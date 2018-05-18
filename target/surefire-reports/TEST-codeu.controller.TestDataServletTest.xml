@@ -45,7 +45,7 @@
     <property name="java.class.path" value="/Users/majin/Documents/apache-maven-3.5.2/boot/plexus-classworlds-2.5.2.jar"/>
     <property name="java.vm.specification.version" value="9"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher appengine:devserver"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -61,6 +61,6 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="codeu.controller.TestDataServletTest" name="testDoGet" time="0.001"/>
-  <testcase classname="codeu.controller.TestDataServletTest" name="testDoPost_Cancel" time="0.001"/>
-  <testcase classname="codeu.controller.TestDataServletTest" name="testDoPost_Confirm" time="0.002"/>
+  <testcase classname="codeu.controller.TestDataServletTest" name="testDoPost_Cancel" time="0.002"/>
+  <testcase classname="codeu.controller.TestDataServletTest" name="testDoPost_Confirm" time="0.001"/>
 </testsuite>

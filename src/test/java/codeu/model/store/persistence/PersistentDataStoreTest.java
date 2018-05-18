@@ -7,6 +7,7 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import java.time.Instant;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.UUID;
 import org.junit.After;
 import org.junit.Assert;
@@ -42,15 +43,18 @@ public class PersistentDataStoreTest {
     String nameOne = "test_username_one";
     Instant creationOne = Instant.ofEpochMilli(1000);
     String password = "password";
-    User inputUserOne = new User(idOne, nameOne,  password, creationOne);
+    List<String> convoOne = new ArrayList<>();
+    User inputUserOne = new User(idOne, nameOne,  password, creationOne, convoOne);
 
     UUID idTwo = UUID.randomUUID();
     String nameTwo = "test_username_two";
     Instant creationTwo = Instant.ofEpochMilli(2000);
-    User inputUserTwo = new User(idTwo, nameTwo, password,creationTwo);
+    List<String> convoTwo = new ArrayList<>();
+    User inputUserTwo = new User(idTwo, nameTwo, password,creationTwo, convoTwo);
 
     // save
     persistentDataStore.writeThrough(inputUserOne);
+
     persistentDataStore.writeThrough(inputUserTwo);
 
     // load
@@ -63,11 +67,16 @@ public class PersistentDataStoreTest {
     Assert.assertEquals(nameOne, resultUserOne.getName());
     Assert.assertEquals(creationOne, resultUserOne.getCreationTime());
 
+    Assert.assertEquals(convoOne, resultUserOne.getMyConversations());
+
+
     User resultUserTwo = resultUsers.get(1);
     Assert.assertEquals(idTwo, resultUserTwo.getId());
     Assert.assertEquals(password, resultUserTwo.getPassword());
     Assert.assertEquals(nameTwo, resultUserTwo.getName());
     Assert.assertEquals(creationTwo, resultUserTwo.getCreationTime());
+    Assert.assertEquals(convoTwo, resultUserTwo.getMyConversations());
+
   }
 
   @Test
@@ -97,6 +106,7 @@ public class PersistentDataStoreTest {
     Assert.assertEquals(ownerOne, resultConversationOne.getOwnerId());
     Assert.assertEquals(titleOne, resultConversationOne.getTitle());
     Assert.assertEquals(creationOne, resultConversationOne.getCreationTime());
+
 
     Conversation resultConversationTwo = resultConversations.get(1);
     Assert.assertEquals(idTwo, resultConversationTwo.getId());
