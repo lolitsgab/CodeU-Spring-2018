@@ -85,13 +85,15 @@ public class PersistentDataStoreTest {
     UUID ownerOne = UUID.randomUUID();
     String titleOne = "Test_Title";
     Instant creationOne = Instant.ofEpochMilli(1000);
-    Conversation inputConversationOne = new Conversation(idOne, ownerOne, titleOne, creationOne);
+    Boolean privateOne = false;
+    Conversation inputConversationOne = new Conversation(idOne, ownerOne, titleOne, creationOne, privateOne);
 
     UUID idTwo = UUID.randomUUID();
     UUID ownerTwo = UUID.randomUUID();
     String titleTwo = "Test_Title_Two";
     Instant creationTwo = Instant.ofEpochMilli(2000);
-    Conversation inputConversationTwo = new Conversation(idTwo, ownerTwo, titleTwo, creationTwo);
+    Boolean privateTwo = false;
+    Conversation inputConversationTwo = new Conversation(idTwo, ownerTwo, titleTwo, creationTwo, privateTwo);
 
     // save
     persistentDataStore.writeThrough(inputConversationOne);
@@ -106,6 +108,8 @@ public class PersistentDataStoreTest {
     Assert.assertEquals(ownerOne, resultConversationOne.getOwnerId());
     Assert.assertEquals(titleOne, resultConversationOne.getTitle());
     Assert.assertEquals(creationOne, resultConversationOne.getCreationTime());
+    Assert.assertEquals(privateOne, resultConversationOne.getIsPrivate());
+
 
 
     Conversation resultConversationTwo = resultConversations.get(1);
@@ -113,6 +117,7 @@ public class PersistentDataStoreTest {
     Assert.assertEquals(ownerTwo, resultConversationTwo.getOwnerId());
     Assert.assertEquals(titleTwo, resultConversationTwo.getTitle());
     Assert.assertEquals(creationTwo, resultConversationTwo.getCreationTime());
+    Assert.assertEquals(privateTwo, resultConversationTwo.getIsPrivate());
   }
 
   @Test

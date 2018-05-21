@@ -65,9 +65,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
                                     <form action="/chat/<%= conversation.getTitle() %>" method="POST">
                                         <input type="text" name="message" style="width:100%; margin-top: 10px; overflow-y: scroll;">
                                         <br/>
-                                        <a class="btn btn-sm btn-primary display-4" href="" style="
-                                        margin-bottom: 3px;
-                                        width: 100%;"><span></span>Send</a>
+                                        <button href="" type="submit"  class="btn btn-sm btn-block btn-primary btn-form display-4">Send</button>
                                     </form>
                                     <% } else { %>
                                       <p><a href="/login">Login</a> to send a message.</p>
