@@ -18,6 +18,8 @@ import codeu.model.data.Conversation;
 import codeu.model.store.persistence.PersistentStorageAgent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Store class that uses in-memory data structures to hold values and automatically loads from and
@@ -83,6 +85,7 @@ public class ConversationStore {
 
   /** Access the current set of conversations known to the application. */
   public List<Conversation> getAllConversations() {
+    Collections.sort(conversations,Comparator.comparing(Conversation::getCreationTime));
     return conversations;
   }
 
@@ -117,4 +120,14 @@ public class ConversationStore {
   public void setConversations(List<Conversation> conversations) {
     this.conversations = conversations;
   }
+/*
+  public List<Conversations> reverse(){
+    int list_size = conversations.size();
+    List<Conversations> reversed_list = new ArrayList<>();
+    for(int i = list_size-1; i >= 0; ++i){
+      reversed_list.add(conversations(list_size));
+    }
+    return reversed_list;
+  }
+  */
 }

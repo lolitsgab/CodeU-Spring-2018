@@ -1,3 +1,4 @@
+
  <section class="menu cid-qPqsYB3Xju" once="menu" id="menu1-m">
 
 
@@ -14,11 +15,11 @@
        <div class="menu-logo">
            <div class="navbar-brand">
                <span class="navbar-logo">
-                   <a href="/">
+                   <a href="http://localhost:8080/">
                         <img src="/assets/images/logo2.png" alt="Mobirise" style="height: 3.8rem;">
                    </a>
                </span>
-               <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/">
+               <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="http://localhost:8080/">
                        ABChat</a></span>
            </div>
        </div>
@@ -27,7 +28,12 @@
          <% if(request.getSession().getAttribute("user") != null){ %>
            <li class="nav-item"><a class="nav-link link text-white display-4" href="/conversations"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
                        Conversations</a></li>
-                       <% } %>
+          <li class="nav-item"><a class="nav-link link text-white display-4" href="/feed"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+                      Feed</a></li>
+
+          <li class="nav-item"><a class="nav-link link text-white display-4" href="/users/<%=  request.getSession().getAttribute("user")%> "><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+                            Profile </a></li>
+                          <% } %>
                <li class="nav-item">
                    <a class="nav-link link text-white display-4" href="/about.jsp">
                        <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>

@@ -23,6 +23,7 @@
 
 </head>
 <body>
+
   <section class="menu cid-qPqsYB3Xju" once="menu" id="menu1-m">
 
 
@@ -52,6 +53,11 @@
           <% if(request.getSession().getAttribute("user") != null){ %>
             <li class="nav-item"><a class="nav-link link text-white display-4" href="/conversations"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
                         Conversations</a></li>
+            <li class="nav-item"><a class="nav-link link text-white display-4" href="/feed"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+                        Feed</a></li>
+
+            <li class="nav-item"><a class="nav-link link text-white display-4" href="/users/<%=  request.getSession().getAttribute("user")%> "><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+                        Profile </a></li>
                         <% } %>
                 <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="/about.jsp">
