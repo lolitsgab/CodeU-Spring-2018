@@ -96,7 +96,7 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
       </script>
     </form>
     <% } else { %>
-    <p class="mbr-text pb-3 mbr-fonts-style display-5"><strong>Sign in to message <%= profile.getUserName() %></strong></p>
+    <p><strong><a href="/login" style="color: white">Login</a> to message <%= profile.getUserName() %></strong></p>
     <% } %>
     <hr/>
 
