@@ -9,12 +9,13 @@ Profile page
 <%@ page import="java.time.ZoneId" %>
 <%@ page import="java.util.Locale" %>
 <%@ page import="codeu.model.data.Profile" %>
+<%@ page import="codeu.model.data.User" %>
 <%@ page import="codeu.model.data.Conversation" %>
 <%@ page import="codeu.model.data.Message" %>
 <%@ page import="codeu.model.store.basic.ProfileStore" %>
 <%@ page import="codeu.model.store.basic.UserStore" %>
-<%@ page import="codeu.model.data.User" %>
 <%@ page import="codeu.model.store.basic.ConversationStore" %>
+<%@ page import="codeu.model.store.basic.MessageStore" %>
 
 <%
 Profile profile = (Profile) request.getAttribute("profile");
@@ -94,11 +95,13 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
       }
       </script>
     </form>
+    <% } else { %>
+    <p class="mbr-text pb-3 mbr-fonts-style display-5"><strong>Sign in to message <%= profile.getUserName() %></strong></p>
     <% } %>
     <hr/>
 
 
-  <a><strong> <%= profile.getUserName() %>'s Sent Messages</strong></a>
+  <p class="mbr-text pb-3 mbr-fonts-style display-5"><strong> <%= profile.getUserName() %>'s Sent Messages</strong></p>
   <div id="messages" align="left" style="background: white; height: 62vh; border: 2px solid black; overflow-y: scroll">
     <ul>
     <%
@@ -108,7 +111,7 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E MMM dd HH:mm:ss zz y").withLocale(Locale.US).withZone(ZoneId.systemDefault());
       String time = formatter.format(instant);
     %>
-    <li><strong><%= time %>: </strong><%= message.getContent() %> </li>
+    <li style="color: black"><strong><%= time %>: </strong><%= message.getContent() %> </li>
     <%
     }
     %>

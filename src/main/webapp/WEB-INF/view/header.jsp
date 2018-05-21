@@ -41,7 +41,7 @@
                    </a>
                </li></ul>
         <% if(request.getSession().getAttribute("user") == null){ %>
-           <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/login"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>Sign in</a> <a class="btn btn-sm btn-primary display-4" href="/register"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>RegisterI</a></div>
+           <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/login"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>Sign in</a> <a class="btn btn-sm btn-primary display-4" href="/register"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>Register</a></div>
            <% } %>
        </div>
    </nav>
