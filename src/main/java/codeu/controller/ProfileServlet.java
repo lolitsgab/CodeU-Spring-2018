@@ -5,9 +5,11 @@ package codeu.controller;
 
 import codeu.model.data.User;
 import codeu.model.data.Profile;
+import codeu.model.data.Message;
 import codeu.model.data.Conversation;
 import codeu.model.store.basic.ProfileStore;
 import codeu.model.store.basic.UserStore;
+import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.ConversationStore;
 import java.util.List;
 import java.io.IOException;
@@ -26,11 +28,15 @@ public class ProfileServlet extends HttpServlet {
   /** Store class that gives access to Users. */
   private UserStore userStore;
 
-  /** Store calls that gives access to Profiles.*/
+  /** Store class that gives access to Profiles. */
   private ProfileStore profileStore;
+
+  /** Store class that gives access to Messages. */
+  private MessageStore messageStore;
 
   /** Store calls that gives access to Conversations.*/
   private ConversationStore conversationStore;
+
 
   /**
    * Set up state for handling login-related requests. This method is only called when running in a
@@ -41,8 +47,10 @@ public class ProfileServlet extends HttpServlet {
     super.init();
     setUserStore(UserStore.getInstance());
     setProfileStore(ProfileStore.getInstance());
+    setMessageStore(MessageStore.getInstance());
     setConversationStore(ConversationStore.getInstance());
   }
+
 
   /**
    * Sets the UserStore used by this servlet. This function provides a common setup method for use
@@ -59,13 +67,19 @@ public class ProfileServlet extends HttpServlet {
     this.profileStore = profileStore;
   }
   /**
+   * Sets the MessageStore used by this servlet. This function provides a common setup method
+   * for use by the test framework or the servlet's init() function.
+   */
+  void setMessageStore(MessageStore messageStore) {
+    this.messageStore = messageStore;
+  }
+  /**
    * Sets the ConversationStore used by this servlet. This function provides a common setup method
    * for use by the test framework or the servlet's init() function.
    */
   void setConversationStore(ConversationStore conversationStore) {
     this.conversationStore = conversationStore;
   }
-
 
 
   @Override
@@ -81,15 +95,21 @@ public class ProfileServlet extends HttpServlet {
       response.sendRedirect("/login");
       return;
     }
-
+    
+    // Retrieve all the messages by the user
+    User user = userStore.getUser(userProfile);
+    UUID authorId = user.getId();
+    List<Message> messages = messageStore.getMessagesByUser(authorId);
+    request.setAttribute("messages", messages);
+    
     User profileUser = userStore.getUser(profile.getUserName());
 
     request.setAttribute("profile", profile);
     request.setAttribute("profileName", profile.getUserName());
     request.setAttribute("profileUser", profileUser);
     request.setAttribute("convStore", conversationStore);
-
-		request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request,response);
+    
+    request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request,response);
   }
 
 

@@ -2,7 +2,15 @@
 Profile page
 --%>
 
+<%@ page import="java.util.List" %>
+<%@ page import="java.time.Instant" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.time.format.FormatStyle" %>
+<%@ page import="java.time.ZoneId" %>
+<%@ page import="java.util.Locale" %>
 <%@ page import="codeu.model.data.Profile" %>
+<%@ page import="codeu.model.data.Conversation" %>
+<%@ page import="codeu.model.data.Message" %>
 <%@ page import="codeu.model.store.basic.ProfileStore" %>
 <%@ page import="codeu.model.store.basic.UserStore" %>
 <%@ page import="codeu.model.data.User" %>
@@ -34,8 +42,6 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
   <link rel="stylesheet" href="/assets/dropdown/css/style.css">
   <link rel="stylesheet" href="/assets/theme/css/style.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-
-
 
 </head>
 <body>
@@ -77,7 +83,9 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
   <% } %>
 
   <hr/>
-  <% if(request.getSession().getAttribute("user") != null) { %>
+
+
+    <% if(request.getSession().getAttribute("user") != null) { %>
     <form action="/users/<%= profile.getUserName() %>" method="POST">
       <button type = "submit" name = "action" class="btn btn-sm btn-secondary display-4"value = "directMessage" onclick = "directMessage()"> Message Me! </button>
       <script>
@@ -87,6 +95,26 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
       </script>
     </form>
     <% } %>
+    <hr/>
+
+
+  <a><strong> <%= profile.getUserName() %>'s Sent Messages</strong></a>
+  <div id="messages" align="left" style="background: white; height: 62vh; border: 2px solid black; overflow-y: scroll">
+    <ul>
+    <%
+    List<Message> messages = (List<Message>) request.getAttribute("messages");
+    for(Message message : messages) {
+      Instant instant = message.getCreationTime();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E MMM dd HH:mm:ss zz y").withLocale(Locale.US).withZone(ZoneId.systemDefault());
+      String time = formatter.format(instant);
+    %>
+    <li><strong><%= time %>: </strong><%= message.getContent() %> </li>
+    <%
+    }
+    %>
+    </ul>
+  </div>
+  <hr/>
 
 </div>
 </section>
