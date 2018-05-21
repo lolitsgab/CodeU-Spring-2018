@@ -44,8 +44,16 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
   <link rel="stylesheet" href="/assets/theme/css/style.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
 
+  <script>
+    // scroll the chat div to the bottom
+    function scrollChat() {
+      var chatDiv = document.getElementById('messages');
+      chatDiv.scrollTop = chatDiv.scrollHeight;
+    };
+  </script>
+
 </head>
-<body>
+<body onload="scrollChat()">
   <%@ include file = "header.jsp" %>
 
 <section class="engine"><a href="https://mobirise.ws/i">build your own website</a></section><section class="cid-qPqDt9J72L mbr-fullscreen" data-bg-video="https://www.youtube.com/watch?v=Q7tGuUz8_0s" id="header15-k">
