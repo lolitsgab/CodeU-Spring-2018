@@ -40,7 +40,7 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="/">
+                    <a href="team-abc.appspot/about.jsp">
                          <img src="assets/images/logo2.png" alt="Mobirise" style="height: 3.8rem;">
                     </a>
                 </span>
