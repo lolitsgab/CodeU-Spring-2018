@@ -77,7 +77,8 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
   <% } %>
 
   <hr/>
-  <% if(request.getSession().getAttribute("user") != null) { %>
+
+  <% if(request.getSession().getAttribute("user") != null &&  !(request.getSession().getAttribute("user").equals(profileName)))  { %>
     <form action="/users/<%= profile.getUserName() %>" method="POST">
       <button type = "submit" name = "action" class="btn btn-sm btn-secondary display-4"value = "directMessage" onclick = "directMessage()"> Message Me! </button>
       <script>
