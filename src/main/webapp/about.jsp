@@ -53,10 +53,10 @@
           <% if(request.getSession().getAttribute("user") != null){ %>
             <li class="nav-item"><a class="nav-link link text-white display-4" href="/conversations"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
                         Conversations</a></li>
-            <li class="nav-item"><a class="nav-link link text-white display-4" href="/feed"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+            <li class="nav-item"><a class="nav-link link text-white display-4" href="/feed"><span class="mbrib-file mbr-iconfont mbr-iconfont-btn"></span>
                         Feed</a></li>
 
-            <li class="nav-item"><a class="nav-link link text-white display-4" href="/users/<%=  request.getSession().getAttribute("user")%> "><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+            <li class="nav-item"><a class="nav-link link text-white display-4" href="/users/<%=  request.getSession().getAttribute("user")%> "><span class="mbrib-hearth mbr-iconfont mbr-iconfont-btn"></span>
                         Profile </a></li>
                         <% } %>
                 <li class="nav-item">

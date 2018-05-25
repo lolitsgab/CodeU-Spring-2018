@@ -53,10 +53,10 @@
           <% if(request.getSession().getAttribute("user") != null){ %>
             <li class="nav-item"><a class="nav-link link text-white display-4" href="/conversations"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
                         Conversations</a></li>
-          <li class="nav-item"><a class="nav-link link text-white display-4" href="/feed"><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+          <li class="nav-item"><a class="nav-link link text-white display-4" href="/feed"><span class="mbrib-file mbr-iconfont mbr-iconfont-btn"></span>
                         Feed</a></li>
 
-          <li class="nav-item"><a class="nav-link link text-white display-4" href="/users/<%=  request.getSession().getAttribute("user")%> "><span class="mbrib-chat mbr-iconfont mbr-iconfont-btn"></span>
+          <li class="nav-item"><a class="nav-link link text-white display-4" href="/users/<%=  request.getSession().getAttribute("user")%> "><span class="mbrib-hearth mbr-iconfont mbr-iconfont-btn"></span>
                           Profile </a></li>
 
                         <% } %>
@@ -85,15 +85,15 @@
                     Welcome to ABChat</h1>
 
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">finally, a simple chat service</p>
-                <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="https://mobirise.com">LEARN MORE</a></div>
+		<% if(request.getSession().getAttribute("user") == null) { %>
+                <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="/register">Let's Get Started</a></div>
+		<% } else { %>
+		<div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="/conversations">Let's Get Started</a></div>
+		<% } %>
             </div>
         </div>
     </div>
-    <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
-        <a href="#next">
-            <i class="mbri-down mbr-iconfont"></i>
-        </a>
-    </div>
+
 </section>
 
 </body>

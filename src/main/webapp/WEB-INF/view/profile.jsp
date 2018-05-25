@@ -34,8 +34,8 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
   <link rel="shortcut icon" href="/assets/images/logo2.png" type="image/x-icon">
   <meta name="description" content="Web Site Builder Description">
   <title>Profile </title>
-  <link rel="stylesheet" href="/assets/web//assets/mobirise-icons-bold/mobirise-icons-bold.css">
-  <link rel="stylesheet" href="/assets/web//assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="/assets/tether/tether.min.css">
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
@@ -71,9 +71,9 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
      About <%= profile.getUserName() %> </strong></p>
 
   <p class="mbr-text pb-3 mbr-fonts-style display-5" id = "profileInfo"> <%= profile.getAboutMe() %></p>
-  <br/>
 
   <% if(request.getSession().getAttribute("user") != null && request.getSession().getAttribute("user").equals(profileName) ){ %>
+      <br/>
       <form action="/users/<%= profile.getUserName() %>" method="POST">
       <p class="mbr-text pb-3 mbr-fonts-style display-5" ><strong>Edit your profile here! (only you can see this) </strong></p>
       <textarea rows="4" cols="100" id ="aboutMeText" name = "profileContent">
@@ -94,21 +94,6 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
   <hr/>
 
 
-    <% if(request.getSession().getAttribute("user") != null) { %>
-    <form action="/users/<%= profile.getUserName() %>" method="POST">
-      <button type = "submit" name = "action" class="btn btn-sm btn-secondary display-4"value = "directMessage" onclick = "directMessage()"> Message Me! </button>
-      <script>
-      function directMessage(){
-        document.getElementById("demo").innerHTML = "direct message clicked";
-      }
-      </script>
-    </form>
-    <% } else { %>
-    <p><strong><a href="/login" style="color: white">Login</a> to message <%= profile.getUserName() %></strong></p>
-    <% } %>
-    <hr/>
-
-
   <p class="mbr-text pb-3 mbr-fonts-style display-5"><strong> <%= profile.getUserName() %>'s Sent Messages</strong></p>
   <div id="messages" align="left" style="background: white; height: 62vh; border: 2px solid black; overflow-y: scroll">
     <ul>
@@ -126,6 +111,22 @@ ConversationStore convoStore = (ConversationStore) request.getAttribute("convoSt
     </ul>
   </div>
   <hr/>
+
+
+    <% if(request.getSession().getAttribute("user") != null && !profile.getUserName().equals(request.getSession().getAttribute("user"))) { %>
+    <form action="/users/<%= profile.getUserName() %>" method="POST">
+      <button type = "submit" name = "action" class="btn btn-sm btn-secondary display-4"value = "directMessage" onclick = "directMessage()"> Message Me! </button>
+      <script>
+      function directMessage(){
+        document.getElementById("demo").innerHTML = "direct message clicked";
+      }
+      </script>
+    </form>
+    <hr/>
+    <% } else if(!profile.getUserName().equals(request.getSession().getAttribute("user"))) { %>
+    <p><strong><a href="/login" style="color: white; font-weight: bold; text-decoration: underline">Login</a> to message <%= profile.getUserName() %></strong></p>
+    <hr/>
+    <% } %>
 
 </div>
 </section>
