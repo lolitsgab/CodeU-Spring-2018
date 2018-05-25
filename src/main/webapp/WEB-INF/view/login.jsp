@@ -49,7 +49,7 @@
 
 
                     <div class="form-group">
-                        <input type="text" class="form-control px-3" name="username" placeholder="username" required="" id="username">
+                        <input type="text" class="form-control px-3" name="username" placeholder="Username" required="" id="username">
                     </div>
 
                     <div class="form-group">
@@ -63,7 +63,7 @@
     </div>
 </div>
     </div>
-    
+
 </section>
 
 

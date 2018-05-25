@@ -85,6 +85,12 @@ public class RegisterServlet extends HttpServlet {
      return;
    }
 
+   if (password.length() < 6) {
+     request.setAttribute("error", "The password must be at least 6 characters long.");
+     request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
+     return;
+   }
+
    List<String> myConversations = new ArrayList<>();
 
    User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now(), myConversations);
