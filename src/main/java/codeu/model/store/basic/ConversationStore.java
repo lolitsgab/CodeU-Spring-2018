@@ -18,6 +18,7 @@ import codeu.model.data.Conversation;
 import codeu.model.store.persistence.PersistentStorageAgent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -114,6 +115,16 @@ public class ConversationStore {
       }
     }
     return null;
+  }
+
+  /** Return whether the conversation that the Message is in is public */
+  public boolean isConversationPrivate(UUID conversationId) {
+    for (Conversation conversation : conversations) {
+      if (conversation.getId().equals(conversationId)) {
+        return conversation.getIsPrivate();
+      }
+    }
+    return false;
   }
 
   /** Sets the List of Conversations stored by this ConversationStore. */
