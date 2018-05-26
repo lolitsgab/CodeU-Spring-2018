@@ -31,6 +31,22 @@
                                     <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">
                                       Conversations
                                     </h2>
+
+                                    <div class="form-container">
+                                        <div class="media-container-column" data-form-type="formoid">
+                                          <% if(request.getSession().getAttribute("user") != null){ %>
+                                          <h2 class="mbr-section-title pb-3 mbr-fonts-style display-5">
+                                            Create a new Conversation
+                                          </h2>
+                                            <form class="mbr-form" action="/conversations" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control px-3" name="conversationTitle" placeholder="Conversation Title" required="" id="conversationTitle">
+                                                    </div>
+                                                    <span class="input-group-btn"><button ref="" type="submit" class="btn btn-secondary btn-form display-4" style="width:100%;">Create</button></span>
+                                            </form>
+                                        </div>
+                                      <% } %>
+
                                     <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style display-5">
                                       Here are all the convesations including you.
                                     </h3>
@@ -38,6 +54,7 @@
                                     <div class="container timelines-container" mbri-timelines="">
                                       <% int i = 0;
                                       List<Conversation> conversations = (List<Conversation>) request.getAttribute("conversations");
+
                                       if(conversations == null || conversations.isEmpty()){
                                         %>
                                         <p>Create a conversation to get started.</p>
@@ -45,7 +62,8 @@
                                       }
                                       else{
 
-                                        for(Conversation conversation : conversations){
+                                        for(int j = conversations.size()-1; j >= 0; --j){
+                                          Conversation conversation = conversations.get(j);
                                           if(i%2 == 0)
                                           {%>
                                           <div class="row timeline-element reverse separline">

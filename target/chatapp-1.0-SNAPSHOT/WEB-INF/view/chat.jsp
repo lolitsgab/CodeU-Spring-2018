@@ -27,11 +27,17 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
                               <link rel="stylesheet" href="/assets/theme/css/style.css">
                                 <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
 
-
+                                <script>
+                                  // scroll the chat div to the bottom
+                                  function scrollChat() {
+                                    var chatDiv = document.getElementById('chat');
+                                    chatDiv.scrollTop = chatDiv.scrollHeight;
+                                  };
+                                </script>
 
                                 </head>
-                                <body>
-                                  <%@ include file = "header.jsp" %>
+                                <body onload="scrollChat()">
+                                  <%@ include file="header.jsp" %>
                                   <section class="engine"><a href="https://mobirise.ws/h">make your own website</a></section><section class="timeline2 cid-qRokDn3vyO" id="timeline2-1g">
                                   <div class="container align-center">
                                     <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">
@@ -41,14 +47,14 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
                                       Write below!
                                     </h3>
 
-                                    <div align = "left" style="background: white; height: 62vh; border: 2px solid black;">
+                                    <div id="chat" align="left" style="background: white; height: 62vh; border: 2px solid black; overflow-y: scroll">
                                       <ul>
                                         <%
                                         for (Message message : messages) {
                                           String author = UserStore.getInstance()
                                           .getUser(message.getAuthorId()).getName();
                                           %>
-                                          <li><strong><a href="/users/<%=author%>" style="color: black"><%= author %>:</a></strong> <%= message.getContent() %></li>
+                                          <li><strong><a href="/users/<%= author %>" style="color: black"><%= author %>:</a></strong> <%= message.getContent() %></li>
                                           <%
                                         }
                                         %>
@@ -59,9 +65,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
                                     <form action="/chat/<%= conversation.getTitle() %>" method="POST">
                                         <input type="text" name="message" style="width:100%; margin-top: 10px; overflow-y: scroll;">
                                         <br/>
-                                        <a class="btn btn-sm btn-primary display-4" href="" style="
-                                        margin-bottom: 3px;
-                                        width: 100%;"><span></span>Send</a>
+                                        <button href="" type="submit"  class="btn btn-sm btn-block btn-primary btn-form display-4">Send</button>
                                     </form>
                                     <% } else { %>
                                       <p><a href="/login">Login</a> to send a message.</p>

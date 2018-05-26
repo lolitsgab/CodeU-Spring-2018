@@ -42,7 +42,7 @@
                                                     <div class="form-group">
                                                         <input type="text" class="form-control px-3" name="conversationTitle" placeholder="Conversation Title" required="" id="conversationTitle">
                                                     </div>
-                                                    <span class="input-group-btn"><button href="" type="submit" class="btn btn-secondary btn-form display-4">Create</button></span>
+                                                    <span class="input-group-btn"><button ref="" type="submit" class="btn btn-secondary btn-form display-4" style="width:100%;">Create</button></span>
                                             </form>
                                         </div>
                                       <% } %>
