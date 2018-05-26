@@ -11,6 +11,7 @@ import codeu.model.store.basic.ProfileStore;
 import codeu.model.store.basic.UserStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.ConversationStore;
+import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 import java.time.Instant;
@@ -95,12 +96,32 @@ public class ProfileServlet extends HttpServlet {
       response.sendRedirect("/login");
       return;
     }
-    
-    // Retrieve all the messages by the user
+
+
+    // retrieve all messages by the user
     User user = userStore.getUser(userProfile);
     UUID authorId = user.getId();
     List<Message> messages = messageStore.getMessagesByUser(authorId);
-    request.setAttribute("messages", messages);
+
+    String username = (String) request.getSession().getAttribute("user");
+    if (userProfile.equals(username)) {
+
+      // display all messages sent by user
+      request.setAttribute("messages", messages);
+
+    } else {
+
+      // display only public messages sent by user
+      List<Message> publicMessages = new ArrayList<Message>();
+      for (Message message : messages) {
+        if(!conversationStore.isConversationPrivate(message.getConversationId())) {
+          publicMessages.add(message);
+	}
+      }
+      request.setAttribute("messages", publicMessages);
+
+    }
+
     
     User profileUser = userStore.getUser(profile.getUserName());
 
